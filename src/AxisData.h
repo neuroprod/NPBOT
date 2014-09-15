@@ -9,6 +9,7 @@
 #ifndef __NPBOT__AxisData__
 #define __NPBOT__AxisData__
 #include "cinder/app/AppNative.h"
+#include "cinder/app/AppNative.h"
 #include <iostream>
 
 using namespace ci;
@@ -36,7 +37,12 @@ public:
     int minSteps;
     int maxSteps;
     
-
-
+    float getTargetInUnits();
+    float getCurrentInUnits();
+    string getTargetForView();
+    string getCurrentForView();
+    
+    
+    void addUnits(float unit);
 };
 #endif /* defined(__NPBOT__AxisData__) */

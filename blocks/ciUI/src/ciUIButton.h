@@ -166,7 +166,7 @@ public:
             hit = true;
             state = CI_UI_STATE_DOWN;         
             setValue(true); 
-			triggerEvent(this); 			
+			//triggerEvent(this);
         }    
         else
         {

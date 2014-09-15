@@ -21,8 +21,13 @@ public:
     void setup(AxisData * axisData, int x, int y);
     void update();
     void draw();
-
+    void guiEvent(ciUIEvent *event);
     ciUICanvas *gui;
     AxisData * axisData;
+    
+    float step;
+    ciUILabel * labelCurrent;
+    ciUILabel * labelTarget;
+    
 };
 #endif /* defined(__NPBOT__AxisUI__) */

@@ -127,6 +127,8 @@ public:
         if(draw_fill)
         {
             ci::gl::color(color_fill);
+            if(size==CI_UI_FONT_LARGE)
+            ci::gl::color(ci::ColorA(0.8,0,0,1));
 //            font->drawString(label, Vec2f(floor(rect->getX())+xOffset, floor(rect->getY()+padding+yOffset)));
             font->drawString(label, Vec2f(floor(rect->getX())+xOffset, floor(rect->getY()+yOffset)));               //Wonky
         }
@@ -153,6 +155,7 @@ public:
         if(visible)
         {
             ci::gl::color(color_fill);
+            ci::gl::color(ci::ColorA(1,0,0,1));
             font->drawString(_string,Vec2f(floor(x), floor(y+yOffset))); 
         }
 	}

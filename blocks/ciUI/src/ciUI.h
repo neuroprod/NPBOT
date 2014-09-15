@@ -195,9 +195,9 @@ enum ciUIThemeType
 
 #else
 
-#define CI_UI_FONT_LARGE_SIZE 24
-#define CI_UI_FONT_MEDIUM_SIZE 18
-#define CI_UI_FONT_SMALL_SIZE 16
+#define CI_UI_FONT_LARGE_SIZE 18
+#define CI_UI_FONT_MEDIUM_SIZE 16
+#define CI_UI_FONT_SMALL_SIZE 12
 
 #endif 
 
