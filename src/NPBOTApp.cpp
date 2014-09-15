@@ -3,6 +3,7 @@
 #include "ciUI.h"
 #include "AxisData.h"
 #include "AxisUI.h"
+#include "ArmViewport.h"
 using namespace ci;
 using namespace ci::app;
 using namespace std;
@@ -35,15 +36,18 @@ class NPBOTApp : public AppNative {
     AxisUI axisUI6;
     
    // float bgColorR;
-   // ciUICanvas *gui;
-    
+   ciUICanvas *gui;
+    ArmViewport view1;
 };
 
 void NPBOTApp::setup()
 {
     
+    gui = new ciUICanvas(10,10,190,215);
+
+    
     int posX=10;
-    int posY =10;
+    int posY =200;
     int stepY=225;
     int stepX=200;
     axis1.setup(0, "A1 z-axis", 75.0f/1600.0f, 0, 400000, "mm");
@@ -81,16 +85,8 @@ void NPBOTApp::setup()
     axisUI6.setup(&axis6,posX,posY);
     UIAxxisses.push_back(&axisUI6);
     
-   /* gui = new ciUICanvas(0,0,200,400);
-    bgColorR =10;
-    gui->addWidgetDown(new ciUILabel("manual", CI_UI_FONT_LARGE));
-    gui->addWidgetDown(new ciUISpacer(182, 2));
-    gui->addWidgetDown(new ciUILabel("z axis", CI_UI_FONT_MEDIUM));
-    gui->addWidgetDown(new ciUISlider(182,20, 0, 250, bgColorR, "dist (mm)"));
-    gui->addWidgetDown(new ciUILabelButton(85, false, "+", CI_UI_FONT_MEDIUM ,"w"));
-    gui->addWidgetRight(new ciUILabelButton(85, false, "-", CI_UI_FONT_MEDIUM,"h"));
-  
-    */
+    posX+=stepX;
+    view1.setup(posX,10,500,500);
 }
 
 void NPBOTApp::mouseDown( MouseEvent event )
@@ -103,19 +99,26 @@ void NPBOTApp::update()
     {
         UIAxxisses[i]->update();
     }
+    
+    view1.update();
 }
 
 void NPBOTApp::draw()
 {
+    
+     glViewport (0  , 0 , getWindowWidth(), getWindowHeight());
+    gl::setMatricesWindow(getWindowWidth(), getWindowHeight());
 	// clear out the window with black
-	gl::clear( Color( 0.3, 0.3, 0.3 ) );
-     //gui->draw();
+	gl::clear( Color( 0.2, 0.2, 0.2 ) );
+     gui->draw();
     
     
     for (int i=0;i<UIAxxisses.size();i++)
     {
         UIAxxisses[i]->draw();
     }
+    
+    view1.draw();
 }
 
 CINDER_APP_NATIVE( NPBOTApp, RendererGl )

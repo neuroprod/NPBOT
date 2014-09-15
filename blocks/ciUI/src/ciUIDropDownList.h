@@ -70,7 +70,7 @@ public:
 		paddedRect->setParent(rect);     
         
         size = _size; 
-        label = new ciUILabel(0,0,(name+" LABEL"), name, _size); 
+        label = new ciUILabel(0,0,(name+" LABEL"), name, _size);
 		label->setParent(label); 
 		label->setRectParent(rect);
         label->setEmbedded(true);

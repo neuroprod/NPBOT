@@ -16,6 +16,10 @@
 		01B1638F19C7086900F93D3C /* AxisData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 01B1638B19C7086900F93D3C /* AxisData.cpp */; };
 		01B1639019C7086900F93D3C /* AxisUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 01B1638D19C7086900F93D3C /* AxisUI.cpp */; };
 		01B1639319C71BB800F93D3C /* ArmViewport.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 01B1639119C71BB800F93D3C /* ArmViewport.cpp */; };
+		01B1639719C7356B00F93D3C /* LogUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 01B1639519C7356B00F93D3C /* LogUI.cpp */; };
+		01B1639A19C7358400F93D3C /* PositionUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 01B1639819C7358400F93D3C /* PositionUI.cpp */; };
+		01B1639D19C735DF00F93D3C /* ArmPosition.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 01B1639B19C735DF00F93D3C /* ArmPosition.cpp */; };
+		01B163A019C737BA00F93D3C /* ArmNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 01B1639E19C737BA00F93D3C /* ArmNode.cpp */; };
 		196A151BDD7B4D649A5B4E68 /* NPBOTApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 73E3A496DB794C37A6099900 /* NPBOTApp.cpp */; };
 		47F9BB7EDBB3410BA825646F /* CinderApp.icns in Resources */ = {isa = PBXBuildFile; fileRef = BE08E45AB5AB4B0BBE5A0E8A /* CinderApp.icns */; };
 		5323E6B20EAFCA74003A9687 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5323E6B10EAFCA74003A9687 /* CoreVideo.framework */; };
@@ -36,6 +40,14 @@
 		01B1638E19C7086900F93D3C /* AxisUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AxisUI.h; path = ../src/AxisUI.h; sourceTree = "<group>"; };
 		01B1639119C71BB800F93D3C /* ArmViewport.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ArmViewport.cpp; path = ../src/ArmViewport.cpp; sourceTree = "<group>"; };
 		01B1639219C71BB800F93D3C /* ArmViewport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ArmViewport.h; path = ../src/ArmViewport.h; sourceTree = "<group>"; };
+		01B1639519C7356B00F93D3C /* LogUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LogUI.cpp; path = ../src/LogUI.cpp; sourceTree = "<group>"; };
+		01B1639619C7356B00F93D3C /* LogUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LogUI.h; path = ../src/LogUI.h; sourceTree = "<group>"; };
+		01B1639819C7358400F93D3C /* PositionUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PositionUI.cpp; path = ../src/PositionUI.cpp; sourceTree = "<group>"; };
+		01B1639919C7358400F93D3C /* PositionUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PositionUI.h; path = ../src/PositionUI.h; sourceTree = "<group>"; };
+		01B1639B19C735DF00F93D3C /* ArmPosition.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ArmPosition.cpp; path = ../src/ArmPosition.cpp; sourceTree = "<group>"; };
+		01B1639C19C735DF00F93D3C /* ArmPosition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ArmPosition.h; path = ../src/ArmPosition.h; sourceTree = "<group>"; };
+		01B1639E19C737BA00F93D3C /* ArmNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ArmNode.cpp; sourceTree = "<group>"; };
+		01B1639F19C737BA00F93D3C /* ArmNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArmNode.h; sourceTree = "<group>"; };
 		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
@@ -69,6 +81,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		01B1639419C71EAD00F93D3C /* ui */ = {
+			isa = PBXGroup;
+			children = (
+				01B1639119C71BB800F93D3C /* ArmViewport.cpp */,
+				01B1639219C71BB800F93D3C /* ArmViewport.h */,
+				01B1638D19C7086900F93D3C /* AxisUI.cpp */,
+				01B1638E19C7086900F93D3C /* AxisUI.h */,
+				01B1639519C7356B00F93D3C /* LogUI.cpp */,
+				01B1639619C7356B00F93D3C /* LogUI.h */,
+				01B1639819C7358400F93D3C /* PositionUI.cpp */,
+				01B1639919C7358400F93D3C /* PositionUI.h */,
+			);
+			name = ui;
+			sourceTree = "<group>";
+		};
 		01B97315FEAEA392516A2CEA /* Blocks */ = {
 			isa = PBXGroup;
 			children = (
@@ -80,13 +107,14 @@
 		080E96DDFE201D6D7F000001 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				01B1639419C71EAD00F93D3C /* ui */,
 				01B1638B19C7086900F93D3C /* AxisData.cpp */,
 				01B1638C19C7086900F93D3C /* AxisData.h */,
-				01B1638D19C7086900F93D3C /* AxisUI.cpp */,
-				01B1638E19C7086900F93D3C /* AxisUI.h */,
+				01B1639B19C735DF00F93D3C /* ArmPosition.cpp */,
+				01B1639C19C735DF00F93D3C /* ArmPosition.h */,
 				73E3A496DB794C37A6099900 /* NPBOTApp.cpp */,
-				01B1639119C71BB800F93D3C /* ArmViewport.cpp */,
-				01B1639219C71BB800F93D3C /* ArmViewport.h */,
+				01B1639E19C737BA00F93D3C /* ArmNode.cpp */,
+				01B1639F19C737BA00F93D3C /* ArmNode.h */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -244,6 +272,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01B1639A19C7358400F93D3C /* PositionUI.cpp in Sources */,
+				01B1639D19C735DF00F93D3C /* ArmPosition.cpp in Sources */,
+				01B163A019C737BA00F93D3C /* ArmNode.cpp in Sources */,
+				01B1639719C7356B00F93D3C /* LogUI.cpp in Sources */,
 				01B1639319C71BB800F93D3C /* ArmViewport.cpp in Sources */,
 				01B1638F19C7086900F93D3C /* AxisData.cpp in Sources */,
 				196A151BDD7B4D649A5B4E68 /* NPBOTApp.cpp in Sources */,
