@@ -19,19 +19,34 @@ void ArmViewport::setup(int _x,int _y,int _w,int _h)
     gui->setColorFill(ColorA(1,0,0,1));
     gui->setColorFillHighlight(ColorA(1,0,0,1));
     
+    
+    
+    
+    
+    
+    
     vector<string> names;
     names.push_back("FRONT");    names.push_back("LEFT");    names.push_back(" TOP ");    names.push_back("F_T_L");
     
     
-    ddl  = new ciUIDropDownList(100, "FRONT", names, CI_UI_FONT_SMALL);
+    ddl  = new ciUIDropDownList(100, "F_T_L", names, CI_UI_FONT_SMALL);
     ddl->setAutoClose(true);
     ddl->setColorFillHighlight(ColorA(1,0,0,1));
     ddl->setColorFill(ColorA(1,1,0,0));
     gui->addWidgetDown(ddl);
     gui->addWidgetRight(new ciUIToggle(20,20,true, "target", CI_UI_FONT_SMALL));
-       gui->addWidgetRight(new ciUIToggle(20,20,true, "current", CI_UI_FONT_SMALL));
-       gui->addWidgetRight(new ciUIToggle(20,20,true, "path", CI_UI_FONT_SMALL));
+    gui->addWidgetRight(new ciUIToggle(20,20,true, "current", CI_UI_FONT_SMALL));
+    gui->addWidgetRight(new ciUIToggle(20,20,true, "path", CI_UI_FONT_SMALL));
     gui->registerUIEvents(this, &ArmViewport::guiEvent);
+    
+    
+    
+    float windowScale =1000;
+    float asp =(float)w/h;
+    
+    center.set(500, 500, 1000);
+    camera.setOrtho(windowScale, -windowScale, -windowScale/asp, windowScale/asp, 0.1, 10000);
+    camera.lookAt( Vec3f(-2000,-2000,2000)+center, center, Vec3f(0,1,0) );
 
 }
 void ArmViewport::guiEvent(ciUIEvent *event)
@@ -46,11 +61,28 @@ void ArmViewport::guiEvent(ciUIEvent *event)
         vector<ciUIWidget *> &selected = ddlist->getSelected();
         for(int i = 0; i < selected.size(); i++)
         {
-           // cout << "SELECTED: " << selected[i]->getName() << endl;
+           
             ddlist->getLabel() ->setLabel(selected[i]->getName());
-            //(selected[i]->getName());
-            //ddlist->s
-            ddlist->getLabel()->unfocus();
+            if(selected[i]->getName()=="FRONT")
+            {
+            
+            camera.lookAt( Vec3f(2000,0,0)+center, center, Vec3f(0,1,0) );
+            }
+           else  if(selected[i]->getName()==" TOP ")
+            {
+                
+                camera.lookAt( Vec3f(0,2000,0)+center, center, Vec3f(1,0,0) );
+            }
+            else if(selected[i]->getName()=="LEFT")
+            {
+                
+                camera.lookAt( Vec3f(0,0,2000)+center, center, Vec3f(0,1,0) );
+            } else if(selected[i]->getName()=="F_T_L")
+            {
+                
+                camera.lookAt( Vec3f(-2000,-2000,2000)+center, center, Vec3f(0,1,0) );
+
+            }
         }
     }
 }
@@ -73,8 +105,21 @@ void ArmViewport::draw()
     
     
     gl::pushMatrices();
-    //  gl::setMatrices(camera1 );
+      gl::setMatrices(camera );
     // drawScene();
+    gl::drawCoordinateFrame (300,0,0);
+    gl::color(ColorA(0,0,0,0.5));
+    gl::drawLine(Vec3f(130,-250,0), Vec3f(130,-250,2000));
+     gl::drawLine(Vec3f(-130,-250,0), Vec3f(-130,-250,2000));
+    
+    
+    
+    /// test
+    gl::color(ColorA(1,1,1,1));
+    gl::drawLine(Vec3f(0,0,0), Vec3f(0,0,2000));
+
+    gl::drawLine( Vec3f(0,350,1000), Vec3f(0,0,1000));
+     gl::drawLine( Vec3f(0,350,1000), Vec3f(390,350,1000));
     
     
     gl::popMatrices();

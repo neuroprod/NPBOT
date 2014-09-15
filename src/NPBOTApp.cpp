@@ -42,12 +42,13 @@ class NPBOTApp : public AppNative {
 
 void NPBOTApp::setup()
 {
-    
-    gui = new ciUICanvas(10,10,190,215);
+    setWindowSize(1920, 1160);
+    setWindowPos(0, 0);
+    gui = new ciUICanvas(10,10,190,200);
 
     
     int posX=10;
-    int posY =200;
+    int posY =220;
     int stepY=225;
     int stepX=200;
     axis1.setup(0, "A1 z-axis", 75.0f/1600.0f, 0, 400000, "mm");
@@ -86,7 +87,7 @@ void NPBOTApp::setup()
     UIAxxisses.push_back(&axisUI6);
     
     posX+=stepX;
-    view1.setup(posX,10,500,500);
+    view1.setup(posX,10,1200,700);
 }
 
 void NPBOTApp::mouseDown( MouseEvent event )
