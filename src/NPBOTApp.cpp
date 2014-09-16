@@ -6,7 +6,7 @@
 #include "ArmViewport.h"
 #include "PositionUI.h"
 #include "ArmPosition.h"
-
+#include "SerialHandler.h"
 using namespace ci;
 using namespace ci::app;
 using namespace std;
@@ -17,7 +17,7 @@ class NPBOTApp : public AppNative {
 	void mouseDown( MouseEvent event );	
 	void update();
 	void draw();
-    
+     void guiEvent(ciUIEvent *event);
     vector <AxisUI *> UIAxxisses;
     
     AxisData axis1;
@@ -56,16 +56,32 @@ class NPBOTApp : public AppNative {
     
     
     vector <PositionUI *> UIpositions;
+    
+    SerialHandler serialHandler;
 };
+void NPBOTApp::guiEvent(ciUIEvent *event)
+{
+    string name = event->widget->getName();
+    if(name == "SEND")
+    {
+        serialHandler.sendPositions();
+    }else if(name =="HOME")
+    {
+        
+        serialHandler.sendHoming();
+        
+        
+    }
 
+}
 void NPBOTApp::setup()
 {
     setWindowSize(1920, 1160);
     setWindowPos(0, 0);
-    gui = new ciUICanvas(10,10,190,200-40);
-    gui->addWidgetRight(new ciUILabelButton(100, false, "send", CI_UI_FONT_MEDIUM ,"send"));
-    gui->addWidgetRight(new ciUILabelButton(100, false, "home", CI_UI_FONT_MEDIUM,"home"));
-    
+    gui = new ciUICanvas(10,10,300,200-40);
+    gui->addWidgetRight(new ciUILabelButton(100, false, "SEND", CI_UI_FONT_MEDIUM ,"SEND"));
+    gui->addWidgetRight(new ciUILabelButton(100, false, "HOME", CI_UI_FONT_MEDIUM,"HOME"));
+      gui->registerUIEvents(this, &NPBOTApp::guiEvent);
     int posX=10;
     int posY =220-40;
     int stepY=210;
@@ -78,24 +94,24 @@ void NPBOTApp::setup()
     
   
     posX+=stepX;
-    axis2.setup(0, "A2 arm 1", 75.0f/1600.0f, 0, 400000, "deg");
+    axis2.setup(0, "A2 arm 1", 400.0f* 50 /360, 0, 400000, "deg");
     axisUI2.setup(&axis2,posX,posY);
     UIAxxisses.push_back(&axisUI2);
     
     
     posX+=stepX;
-    axis3.setup(0, "A3 arm2", 75.0f/1600.0f, 0, 400000, "deg");
+    axis3.setup(0, "A3 arm2", 400.0f* 40 /360, 0, 400000, "deg");
     axisUI3.setup(&axis3,posX,posY);
     UIAxxisses.push_back(&axisUI3);
     
     posX=10;
     posY+=stepY;
-    axis4.setup(0, "A4 pols rot", 75.0f/1600.0f, 0, 400000, "°deg");
+    axis4.setup(0, "A4 pols rot",  400.0f* 10 /360, 0, 400000, "°deg");
     axisUI4.setup(&axis4,posX,posY);
     UIAxxisses.push_back(&axisUI4);
     
     posX+=stepX;
-    axis5.setup(0, "A5 posl bend", 75.0f/1600.0f, 0, 400000, "deg");
+    axis5.setup(0, "A5 posl bend", 400.0f* 10 /360, 0, 400000, "deg");
     axisUI5.setup(&axis5,posX,posY);
     UIAxxisses.push_back(&axisUI5);
     
@@ -137,6 +153,15 @@ void NPBOTApp::setup()
     posY+=stepY;
     zRotposUI.setup(&armPosition.rotZ, &armPosition.targetRotZ,10, posY, "rot Z", 100, 0);
     UIpositions.push_back(&zRotposUI);
+    
+    
+    serialHandler.setup();
+    serialHandler.axisData.push_back(&axis1);
+    serialHandler.axisData.push_back(&axis2);
+    serialHandler.axisData.push_back(&axis3);
+    serialHandler.axisData.push_back(&axis4);
+    serialHandler.axisData.push_back(&axis5);
+    serialHandler.axisData.push_back(&axis6);
     
 }
 

@@ -42,7 +42,7 @@ public:
     string getTargetForView();
     string getCurrentForView();
     
-    
+    bool isHome;
     void addUnits(float unit);
 };
 #endif /* defined(__NPBOT__AxisData__) */

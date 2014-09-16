@@ -19,7 +19,7 @@ void AxisData::setup(int _id, string _name, float _stepsToUnit, int _minSteps, i
     
     targetStep =0;
     currentStep =0;
-
+    isHome =false;
 }
 
 void AxisData::addUnits(float unit)
