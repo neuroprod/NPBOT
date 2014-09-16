@@ -171,6 +171,7 @@ void NPBOTApp::mouseDown( MouseEvent event )
 
 void NPBOTApp::update()
 {
+    serialHandler.update();
     for (int i=0;i<UIAxxisses.size();i++)
     {
         UIAxxisses[i]->update();

@@ -20,7 +20,7 @@ void SerialHandler::setup()
 	
 	try {
 		Serial::Device dev = Serial::findDeviceByNameContains("tty.usbmodem1411");
-		serial = Serial( dev, 9600);
+		serial = Serial( dev, 115200);
         console() << "Serial Connected" << std::endl;
         isonline =true;
 	}
@@ -36,7 +36,7 @@ bool SerialHandler::sendHoming()
     if(!isDone)return false;
     if(!isonline)return true;
     
-    isDone =false;
+   // isDone =false;
     
     
     serial.writeByte(0x00);
@@ -54,7 +54,7 @@ bool SerialHandler::sendPositions()
     if(!isDone)return false;
     if(!isonline)return true;
     
-    isDone =false;
+    //isDone =false;
     
     serial.writeByte(0x01);
     //command.write(&serial );
@@ -75,7 +75,7 @@ bool SerialHandler::sendPositions()
 
 void SerialHandler::writeInt (int val)
 {
-    //ci::app::console()<<"seVal"<<Val<<std::endl;
+    ci::app::console()<<"sendVal"<<val<<std::endl;
     float workVal = (float) val;
     int val1 = floor(workVal/10000);
     workVal -= val1*10000;
