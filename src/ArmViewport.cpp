@@ -45,7 +45,7 @@ void ArmViewport::setup(int _x,int _y,int _w,int _h)
     float asp =(float)w/h;
     
     center.set(500, 500, 1000);
-    camera.setOrtho(windowScale, -windowScale, -windowScale/asp, windowScale/asp, 0.1, 10000);
+    camera.setOrtho(windowScale, -windowScale, -windowScale/asp, windowScale/asp, 100, 7000);
      camera.lookAt( Vec3f(2000,2000,2000)+center, center, Vec3f(0,1,0) );
 
 }
@@ -98,7 +98,7 @@ void ArmViewport::draw()
     gl::setMatricesWindow(w, h);
 
     gl::pushMatrices();
-    gl::color(0.0, 0.0, 0.0);
+    gl::color(0.5, 0.0, 0.0);
     gl::drawSolidRect(Rectf( 0,0,w,h));
     gl::color(0.1, 0.1, 0.1);
     gl::drawSolidRect(Rectf( 0,0,w,35));
@@ -108,20 +108,17 @@ void ArmViewport::draw()
     gl::pushMatrices();
       gl::setMatrices(camera );
     //root->drawCurrent();
-    root->drawTarget();
-   // gl::drawCoordinateFrame (300,0,0);
+   // root->drawTarget();
+    gl::drawCoordinateFrame (300,0,0);
     gl::color(ColorA(1,1,1,0.5));
     gl::drawLine(Vec3f(130,0,0), Vec3f(130,0,2000));
      gl::drawLine(Vec3f(-130,0,0), Vec3f(-130,0,2000));
     
     
     
-    /// test
-    gl::color(ColorA(1,1,1,1));
-    gl::drawLine(Vec3f(0,250,0), Vec3f(0,250,2000));
+       root->drawTarget();
 
-    //gl::drawLine( Vec3f(0,350,1000), Vec3f(0,0,1000));
-     //gl::drawLine( Vec3f(0,350,1000), Vec3f(390,350,1000));
+   root->drawCurrent();
     
     
     gl::popMatrices();
