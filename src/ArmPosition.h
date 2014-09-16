@@ -10,7 +10,7 @@
 #define __NPBOT__ArmTarget__
 
 #include <iostream>
-#include "PositionUI.h"
+
 class ArmPosition
 {
 
@@ -41,6 +41,17 @@ public:
     float targetRotX;
     float targetRotY;
     float targetRotZ;
+    
+    
+    void draw()
+    {
+    
+    };
+    void drawTarget()
+    {
+    
+    
+    };
     
 
 };

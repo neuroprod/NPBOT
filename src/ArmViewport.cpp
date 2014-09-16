@@ -41,12 +41,12 @@ void ArmViewport::setup(int _x,int _y,int _w,int _h)
     
     
     
-    float windowScale =1000;
+    float windowScale =2000;
     float asp =(float)w/h;
     
     center.set(500, 500, 1000);
     camera.setOrtho(windowScale, -windowScale, -windowScale/asp, windowScale/asp, 0.1, 10000);
-    camera.lookAt( Vec3f(-2000,-2000,2000)+center, center, Vec3f(0,1,0) );
+     camera.lookAt( Vec3f(2000,2000,2000)+center, center, Vec3f(0,1,0) );
 
 }
 void ArmViewport::guiEvent(ciUIEvent *event)
@@ -80,7 +80,7 @@ void ArmViewport::guiEvent(ciUIEvent *event)
             } else if(selected[i]->getName()=="F_T_L")
             {
                 
-                camera.lookAt( Vec3f(-2000,-2000,2000)+center, center, Vec3f(0,1,0) );
+                camera.lookAt( Vec3f(2000,2000,2000)+center, center, Vec3f(0,1,0) );
 
             }
         }
@@ -107,20 +107,21 @@ void ArmViewport::draw()
     
     gl::pushMatrices();
       gl::setMatrices(camera );
-    // drawScene();
-    gl::drawCoordinateFrame (300,0,0);
-    gl::color(ColorA(0,0,0,0.5));
-    gl::drawLine(Vec3f(130,-250,0), Vec3f(130,-250,2000));
-     gl::drawLine(Vec3f(-130,-250,0), Vec3f(-130,-250,2000));
+    //root->drawCurrent();
+    root->drawTarget();
+   // gl::drawCoordinateFrame (300,0,0);
+    gl::color(ColorA(1,1,1,0.5));
+    gl::drawLine(Vec3f(130,0,0), Vec3f(130,0,2000));
+     gl::drawLine(Vec3f(-130,0,0), Vec3f(-130,0,2000));
     
     
     
     /// test
     gl::color(ColorA(1,1,1,1));
-    gl::drawLine(Vec3f(0,0,0), Vec3f(0,0,2000));
+    gl::drawLine(Vec3f(0,250,0), Vec3f(0,250,2000));
 
-    gl::drawLine( Vec3f(0,350,1000), Vec3f(0,0,1000));
-     gl::drawLine( Vec3f(0,350,1000), Vec3f(390,350,1000));
+    //gl::drawLine( Vec3f(0,350,1000), Vec3f(0,0,1000));
+     //gl::drawLine( Vec3f(0,350,1000), Vec3f(390,350,1000));
     
     
     gl::popMatrices();

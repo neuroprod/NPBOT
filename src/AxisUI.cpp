@@ -9,7 +9,7 @@
 #include "AxisUI.h"
 void AxisUI::setup(AxisData * _axisData,int x, int y)
 {
-    step =1;
+    step =5;
     axisData = _axisData;
     
     gui = new ciUICanvas(x,y,190,200);
@@ -31,6 +31,7 @@ void AxisUI::setup(AxisData * _axisData,int x, int y)
 void AxisUI::guiEvent(ciUIEvent *event)
 {
     string name = event->widget->getName();
+  
     if(name == "step")
     {
         ciUISlider *slider = (ciUISlider *) event->widget;

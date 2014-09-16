@@ -99,6 +99,21 @@
 			name = ui;
 			sourceTree = "<group>";
 		};
+		01B163A419C8903F00F93D3C /* model */ = {
+			isa = PBXGroup;
+			children = (
+				01B1639E19C737BA00F93D3C /* ArmNode.cpp */,
+				01B1639F19C737BA00F93D3C /* ArmNode.h */,
+				01B163A119C81BF100F93D3C /* SerialHandler.cpp */,
+				01B163A219C81BF100F93D3C /* SerialHandler.h */,
+				01B1638B19C7086900F93D3C /* AxisData.cpp */,
+				01B1638C19C7086900F93D3C /* AxisData.h */,
+				01B1639B19C735DF00F93D3C /* ArmPosition.cpp */,
+				01B1639C19C735DF00F93D3C /* ArmPosition.h */,
+			);
+			name = model;
+			sourceTree = "<group>";
+		};
 		01B97315FEAEA392516A2CEA /* Blocks */ = {
 			isa = PBXGroup;
 			children = (
@@ -110,16 +125,9 @@
 		080E96DDFE201D6D7F000001 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				01B163A419C8903F00F93D3C /* model */,
 				01B1639419C71EAD00F93D3C /* ui */,
-				01B1638B19C7086900F93D3C /* AxisData.cpp */,
-				01B1638C19C7086900F93D3C /* AxisData.h */,
-				01B1639B19C735DF00F93D3C /* ArmPosition.cpp */,
-				01B1639C19C735DF00F93D3C /* ArmPosition.h */,
 				73E3A496DB794C37A6099900 /* NPBOTApp.cpp */,
-				01B1639E19C737BA00F93D3C /* ArmNode.cpp */,
-				01B1639F19C737BA00F93D3C /* ArmNode.h */,
-				01B163A119C81BF100F93D3C /* SerialHandler.cpp */,
-				01B163A219C81BF100F93D3C /* SerialHandler.h */,
 			);
 			name = Source;
 			sourceTree = "<group>";

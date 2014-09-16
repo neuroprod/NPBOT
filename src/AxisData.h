@@ -9,7 +9,7 @@
 #ifndef __NPBOT__AxisData__
 #define __NPBOT__AxisData__
 #include "cinder/app/AppNative.h"
-#include "cinder/app/AppNative.h"
+
 #include <iostream>
 
 using namespace ci;
@@ -24,8 +24,8 @@ public:
     
     void setup(int id, string name, float _stepsToUnit, int _minSteps, int maxSteps, string _unit );
     
-    int targetStep;
-    int currentStep;
+    float targetStep;
+    float currentStep;
     
     
     float stepsToUnit;

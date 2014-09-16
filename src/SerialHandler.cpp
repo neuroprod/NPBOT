@@ -13,10 +13,7 @@
 void SerialHandler::setup()
 {
     isDone =true;
-    const vector<Serial::Device> &devices( Serial::getDevices() );
-	for( vector<Serial::Device>::const_iterator deviceIt = devices.begin(); deviceIt != devices.end(); ++deviceIt ) {
-		console() << "Device: " << deviceIt->getName() << endl;
-	}
+  
 	
 	try {
 		Serial::Device dev = Serial::findDeviceByNameContains("tty.usbmodem1411");
@@ -28,6 +25,11 @@ void SerialHandler::setup()
 		console() << "There was an error initializing the serial device!" << std::endl;
 		//exit( -1 );
         isonline =false;
+        
+        const vector<Serial::Device> &devices( Serial::getDevices() );
+        for( vector<Serial::Device>::const_iterator deviceIt = devices.begin(); deviceIt != devices.end(); ++deviceIt ) {
+            console() << "Device: " << deviceIt->getName() << endl;
+        }
 	}
     
 }

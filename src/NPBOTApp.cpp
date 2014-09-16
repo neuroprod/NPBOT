@@ -7,6 +7,8 @@
 #include "PositionUI.h"
 #include "ArmPosition.h"
 #include "SerialHandler.h"
+
+#include "ArmNode.h"
 using namespace ci;
 using namespace ci::app;
 using namespace std;
@@ -58,6 +60,14 @@ class NPBOTApp : public AppNative {
     vector <PositionUI *> UIpositions;
     
     SerialHandler serialHandler;
+    ArmNode * axis6Node;
+    ArmNode * axis5Node;
+    ArmNode * axis4Node;
+    ArmNode * axis3Node;
+    ArmNode * axis2Node;
+    ArmNode * root;
+    
+    
 };
 void NPBOTApp::guiEvent(ciUIEvent *event)
 {
@@ -120,11 +130,62 @@ void NPBOTApp::setup()
     axisUI6.setup(&axis6,posX,posY);
     UIAxxisses.push_back(&axisUI6);
     
+    
+    
+    
+    
+    
+    
+    axis6Node =new ArmNode();
+    axis6Node->data =&axis6;
+    axis6Node->setup(6,0,0,0,100,0,90,0);
+    
+    
+    axis5Node =new ArmNode();
+    axis5Node->data =&axis5;
+    axis5Node->setup(5,0,50,0,0,0,-90,0);
+    axis5Node->child = axis6Node;
+    axis6Node->parent =axis5Node;
+    
+    axis4Node =new ArmNode();
+    axis4Node->data =&axis4;
+    axis4Node->setup(4,0,0,50,250,0,90,0);
+    axis4Node->child = axis5Node;
+    axis5Node->parent =axis4Node;
+    
+    axis3Node =new ArmNode();
+    axis3Node->data =&axis3;
+    axis3Node->setup(3,0,300,0,0);
+    axis3Node->child = axis4Node;
+    axis4Node->parent =axis3Node;
+    
+     axis2Node =new ArmNode();
+    axis2Node->data =&axis2;
+    axis2Node->setup(2,0, 0,250,0);
+    axis2Node->child = axis3Node;
+    axis3Node->parent =axis2Node;
+    
+    
+    
+    
+    root =new ArmNode();
+    root->data =&axis1;
+    root->setup(1,1);
+    root->child = axis2Node;
+    axis2Node->parent =root;
+    root->parent =nullptr;
+    
+    
     posX+=stepX;
     view1.setup(posX,10,1300,710);
     int vpY =710+20;
     view2.setup(posX,vpY,500,400);
     view3.setup(posX+510,vpY,1300-500-10,400);
+    
+    view1.root =root;
+    view2.root =root;
+    view3.root =root;
+    
     
     armPosition.setup();
      posY+=stepY;
@@ -180,6 +241,7 @@ void NPBOTApp::update()
     {
         UIpositions[i]->update();
     }
+    root->update();
     view1.update();
     view2.update();
     view3.update();

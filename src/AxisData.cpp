@@ -22,19 +22,19 @@ void AxisData::setup(int _id, string _name, float _stepsToUnit, int _minSteps, i
     isHome =false;
 }
 
-void AxisData::addUnits(float unit)
+void AxisData::addUnits(float _unit)
 {
-    targetStep += unit /stepsToUnit;
+    targetStep += _unit /stepsToUnit;
 
 }
 
 float AxisData::getTargetInUnits()
 {
-    return round ((float)targetStep*stepsToUnit*100)/100;
+    return targetStep*stepsToUnit;
 
 }
 float AxisData::getCurrentInUnits(){
-    return  round ((float)currentStep*stepsToUnit*100)/100;
+    return  currentStep*stepsToUnit;
     
 }
 string AxisData::getTargetForView()

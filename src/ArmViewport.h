@@ -13,6 +13,7 @@
 #include <iostream>
 #include "ciUI.h"
 #include "cinder/Camera.h"
+#include "ArmNode.h"
 using namespace ci;
 using namespace ci::app;
 using namespace std;
@@ -39,7 +40,7 @@ class ArmViewport
     CameraOrtho camera;
     ciUICanvas *gui;
     Vec3f center;
-
+ ArmNode * root;
 
 };
 #endif /* defined(__NPBOT__ArmViewport__) */
