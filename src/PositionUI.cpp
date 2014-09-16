@@ -7,3 +7,33 @@
 //
 
 #include "PositionUI.h"
+void PositionUI::setup(float * _value,float *_targetValue, int x,int y, string _name, int max,int min)
+{
+    name =_name;
+    value =_value;
+    targetValue =_targetValue;
+    gui = new ciUICanvas(x,y,590,80);
+    labelMain =new ciUILabel(name , CI_UI_FONT_LARGE);
+    gui->addWidgetDown(labelMain);
+    gui->addWidgetDown(new ciUISlider(400,20, min, max, 10, "target" ));
+    gui->addWidgetRight(new ciUILabelButton(30, false, "+", CI_UI_FONT_MEDIUM ,"+"));
+    gui->addWidgetRight(new ciUILabelButton(30, false, "-", CI_UI_FONT_MEDIUM,"-"));
+    gui->addWidgetRight(new ciUISlider(90,20, 1, 45, 1, "value"));
+}
+void PositionUI::update()
+{
+    std::ostringstream out;
+    out <<std::fixed << std::setprecision(1) <<*value;
+
+    
+    labelMain->setLabel(name +" " + out.str());
+
+}
+void PositionUI::draw()
+{
+    gui->draw();
+}
+void PositionUI::guiEvent(ciUIEvent *event)
+{
+
+}

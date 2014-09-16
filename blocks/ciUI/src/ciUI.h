@@ -35,7 +35,7 @@ using namespace std;
 #define CI_UI_STATE_SUSTAINED 3
 
 #define CI_UI_GLOBAL_PADDING 4
-#define CI_UI_GLOBAL_WIDGET_SPACING 8
+#define CI_UI_GLOBAL_WIDGET_SPACING 4
 
 #define CI_UI_COLOR_BACK ci::ColorA(0.0f, 0.0f, 0.0f, 50.0f/255.0f)                       //the rect's back color
 #define CI_UI_COLOR_OUTLINE ci::ColorA(1.0f, 1.0f, 1.0f, 100.0f/255.0f)                 //the rect's outline color 

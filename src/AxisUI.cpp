@@ -12,7 +12,7 @@ void AxisUI::setup(AxisData * _axisData,int x, int y)
     step =1;
     axisData = _axisData;
     
-    gui = new ciUICanvas(x,y,190,215);
+    gui = new ciUICanvas(x,y,190,200);
     gui->addWidgetDown(new ciUILabel(axisData->name, CI_UI_FONT_LARGE));
 
 //    gui->addWidgetDown(new ciUILabel("current", CI_UI_FONT_SMALL));

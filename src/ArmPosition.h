@@ -18,6 +18,15 @@ class ArmPosition
 
 public:
     ArmPosition(){};
+    void setup()
+    {
+        x =y= z=rotX= rotY=rotZ=0;
+        
+        
+        targetX = targetY= targetZ=targetRotX= targetRotY=targetRotZ =0;
+    
+    
+    }
     float x;
     float y;
     float z;
@@ -25,6 +34,13 @@ public:
     float rotY;
     float rotZ;
 
+    
+    float targetX;
+    float targetY;
+    float targetZ;
+    float targetRotX;
+    float targetRotY;
+    float targetRotZ;
     
 
 };

@@ -14,8 +14,8 @@ void ArmViewport::setup(int _x,int _y,int _w,int _h)
     y=_y;
     w=_w;
     h=_h;
-    gui = new ciUICanvas(x+2,y+2,w-10,200);
-    gui->setColorBack(ColorA(1,0,0,0));
+    gui = new ciUICanvas(x,y,w,200);
+    gui->setColorBack(ColorA(1,1,0,0));
     gui->setColorFill(ColorA(1,0,0,1));
     gui->setColorFillHighlight(ColorA(1,0,0,1));
     
@@ -32,11 +32,11 @@ void ArmViewport::setup(int _x,int _y,int _w,int _h)
     ddl  = new ciUIDropDownList(100, "F_T_L", names, CI_UI_FONT_SMALL);
     ddl->setAutoClose(true);
     ddl->setColorFillHighlight(ColorA(1,0,0,1));
-    ddl->setColorFill(ColorA(1,1,0,0));
+    ddl->setColorFill(ColorA(0,0,0,0));
     gui->addWidgetDown(ddl);
-    gui->addWidgetRight(new ciUIToggle(20,20,true, "target", CI_UI_FONT_SMALL));
-    gui->addWidgetRight(new ciUIToggle(20,20,true, "current", CI_UI_FONT_SMALL));
-    gui->addWidgetRight(new ciUIToggle(20,20,true, "path", CI_UI_FONT_SMALL));
+    gui->addWidgetRight(new ciUIToggle(20,20,true, "target", CI_UI_FONT_SMALL))->setColorBack(ColorA(0,0,0,1));
+    gui->addWidgetRight(new ciUIToggle(20,20,true, "current", CI_UI_FONT_SMALL))->setColorBack(ColorA(0,0,0,1));
+    gui->addWidgetRight(new ciUIToggle(20,20,false, "path", CI_UI_FONT_SMALL))->setColorBack(ColorA(0,0,0,1));;
     gui->registerUIEvents(this, &ArmViewport::guiEvent);
     
     
@@ -98,9 +98,10 @@ void ArmViewport::draw()
     gl::setMatricesWindow(w, h);
 
     gl::pushMatrices();
-    gl::color(0.5, 0.5, 0.5);
+    gl::color(0.0, 0.0, 0.0);
     gl::drawSolidRect(Rectf( 0,0,w,h));
-    gl::color(1, 1, 1);
+    gl::color(0.1, 0.1, 0.1);
+    gl::drawSolidRect(Rectf( 0,0,w,35));
     gl::popMatrices();
     
     
