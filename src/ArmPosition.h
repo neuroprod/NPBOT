@@ -10,7 +10,7 @@
 #define __NPBOT__ArmTarget__
 
 #include <iostream>
-
+#include "ArmNode.h"
 class ArmPosition
 {
 
@@ -42,16 +42,12 @@ public:
     float targetRotY;
     float targetRotZ;
     
+    void setPositionsFromRotations(ArmNode * endNode);
+    void setRotationsFromPositions();
     
-    void draw()
-    {
-    
-    };
-    void drawTarget()
-    {
-    
-    
-    };
+    void drawCurrent();
+    void drawTarget();
+    void drawPosition(float targetX, float targetY,float targetZ,float targetRotX,float targetRotY,float targetRotZ);
     
 
 };

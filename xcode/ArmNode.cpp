@@ -16,11 +16,15 @@ void ArmNode::setup(int pos,int _type, float x,float y,float z,float rotX,float 
     offsetMatrix.translate(Vec3f(x,y,z));
     type =_type;
     if(pos==1) customDraw =std::bind(&ArmNode::drawNode1, this);
-    if(pos==2) customDraw =std::bind(&ArmNode::drawNode1  , this);
-    if(pos==3) customDraw =std::bind(&ArmNode::drawNode1  , this);
-    if(pos==4) customDraw =std::bind(&ArmNode::drawNode1  , this);
-    if(pos==5) customDraw =std::bind(&ArmNode::drawNode1  , this);
-    if(pos==6) customDraw =std::bind(&ArmNode::drawNode1  , this);
+    if(pos==2) customDraw =std::bind(&ArmNode::drawNode2   , this);
+    if(pos==3) customDraw =std::bind(&ArmNode::drawNode3  , this);
+    if(pos==4) customDraw =std::bind(&ArmNode::drawNode4 , this);
+    if(pos==5) customDraw =std::bind(&ArmNode::drawNode5  , this);
+    if(pos==6) customDraw =std::bind(&ArmNode::drawNode6  , this);
+    
+    nodeColor =ColorA(1,1,1,1);
+    ambientColor =ColorA(1,1,1,0.3);
+    
 };
 
 void ArmNode::update()
@@ -64,16 +68,29 @@ void ArmNode::update()
 
 void ArmNode::drawTarget()
 {
-    gl::pushMatrices();
-    gl::multModelView(globalMatrix1 );
-    glEnable( GL_LIGHT0 );
-    // glEnable( GL_LIGHT1 );
     GLfloat light_position[] = {1000,600 , 800,1 };
 	glLightfv( GL_LIGHT0, GL_POSITION, light_position );
+    glEnable( GL_LIGHT0 );
+    gl::pushMatrices();
+ 
+    gl::multModelView(globalMatrix1 );
+    glEnable( GL_LIGHT0 );
+   
+   
 
-    
-    
+    glEnable(GL_DEPTH_TEST);
+    glEnable( GL_LIGHTING );
+    glMaterialfv( GL_FRONT, GL_DIFFUSE,	nodeColor );
+    glMaterialfv( GL_FRONT, GL_AMBIENT,	ambientColor );
     customDraw();
+    
+    
+    glDisable( GL_LIGHTING );
+	glDisable( GL_LIGHT0 );
+    glDisable (GL_DEPTH_TEST);
+    
+    
+    
     gl::drawCoordinateFrame(40,0,0);
     gl::popMatrices();
 
@@ -83,7 +100,7 @@ void ArmNode::drawCurrent()
 {
     gl::pushMatrices();
     gl::multModelView(globalMatrix2 );
-    customDraw();
+   // customDraw();
     gl::drawCoordinateFrame();
     gl::popMatrices();
 if(child) child->drawCurrent();
@@ -99,44 +116,35 @@ if(child) child->drawCurrent();
 
 void ArmNode::drawNode1()
 {
-    glEnable(GL_DEPTH_TEST);
-    glEnable( GL_LIGHTING );
-	   
-   // GLfloat light_position2[] = {-1000,-1000 , -500,1};
-	//glLightfv( GL_LIGHT1, GL_POSITION, light_position2 );
-    
-    ci::ColorA color(  1.0, 1.0, 1.0f, 1.0f );
-    glMaterialfv( GL_FRONT, GL_DIFFUSE,	color );
+  
 
     
-    gl::drawCube(Vec3f(0,100,0), Vec3f(30,200,30));
+    gl::drawCube(Vec3f(0,125,0), Vec3f(30,250,30));
     
-    glDisable( GL_LIGHTING );
-	glDisable( GL_LIGHT0 );
-    glDisable (GL_DEPTH_TEST);
+   
 
 };
 void ArmNode::drawNode2()
 {
   
-
+ gl::drawCube(Vec3f(150,0,0), Vec3f(300,30,30));
 };
 void ArmNode::drawNode3()
 {
-   
+    gl::drawCube(Vec3f(150,50,0), Vec3f(300,30,30));
 };
 void ArmNode::drawNode4()
 {
-
+gl::drawCube(Vec3f(0,0,0), Vec3f(30,30,30));
 
 };
 void ArmNode::drawNode5()
 {
-
+ gl::drawCube(Vec3f(100,0,0), Vec3f(200,30,30));
 
 };
 void ArmNode::drawNode6()
 {
 
-
+gl::drawCube(Vec3f(0,0,0), Vec3f(100,30,30));
 };

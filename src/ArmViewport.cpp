@@ -41,12 +41,50 @@ void ArmViewport::setup(int _x,int _y,int _w,int _h)
     
     
     
-    float windowScale =2000;
-    float asp =(float)w/h;
     
-    center.set(500, 500, 1000);
-    camera.setOrtho(windowScale, -windowScale, -windowScale/asp, windowScale/asp, 100, 7000);
-     camera.lookAt( Vec3f(2000,2000,2000)+center, center, Vec3f(0,1,0) );
+    setView(0);
+   
+}
+void ArmViewport::setView(int id)
+{
+    string name ="";
+    if(id==0)
+    {
+        name ="F_T_L";
+        
+        float windowScale =1200;
+        float asp =(float)w/h;
+        center.set(500, 200, 1000);
+        camera.setOrtho(windowScale, -windowScale, -windowScale/asp, windowScale/asp, 100, 7000);
+        camera.lookAt( Vec3f(2000,1000,1000)+center, center, Vec3f(0,1,0) );
+
+    }
+    else if (id==1)
+    {
+        name ="FRONT";
+        camera.lookAt( Vec3f(2000,0,0)+center, center, Vec3f(0,1,0) );
+        
+    }
+    else if (id==2)
+    {
+        name =" TOP ";
+        
+          camera.lookAt( Vec3f(0,2000,0)+center, center, Vec3f(1,0,0) );
+        
+    }
+    else if (id==3)
+    {
+        
+        name ="LEFT";
+        
+        float windowScale =600;
+        float asp =(float)w/h;
+        center.set(500, 500, 1000);
+        camera.setOrtho(windowScale, -windowScale, -windowScale/asp, windowScale/asp, 100, 7000);
+        camera.lookAt( Vec3f(0,0,2000)+center, center, Vec3f(0,1,0) );
+    }
+    
+    ddl->getLabel() ->setLabel(name);
 
 }
 void ArmViewport::guiEvent(ciUIEvent *event)
@@ -62,26 +100,26 @@ void ArmViewport::guiEvent(ciUIEvent *event)
         for(int i = 0; i < selected.size(); i++)
         {
            
-            ddlist->getLabel() ->setLabel(selected[i]->getName());
+            
             if(selected[i]->getName()=="FRONT")
             {
             
-            camera.lookAt( Vec3f(2000,0,0)+center, center, Vec3f(0,1,0) );
+                setView(1);
+                
             }
            else  if(selected[i]->getName()==" TOP ")
             {
-                
-                camera.lookAt( Vec3f(0,2000,0)+center, center, Vec3f(1,0,0) );
+                setView(2);
+              
             }
             else if(selected[i]->getName()=="LEFT")
             {
+                setView(3);
                 
-                camera.lookAt( Vec3f(0,0,2000)+center, center, Vec3f(0,1,0) );
             } else if(selected[i]->getName()=="F_T_L")
             {
                 
-                camera.lookAt( Vec3f(2000,2000,2000)+center, center, Vec3f(0,1,0) );
-
+                setView(0);
             }
         }
     }
@@ -98,7 +136,7 @@ void ArmViewport::draw()
     gl::setMatricesWindow(w, h);
 
     gl::pushMatrices();
-    gl::color(0.5, 0.0, 0.0);
+    gl::color(0.1, 0.1, 0.1);
     gl::drawSolidRect(Rectf( 0,0,w,h));
     gl::color(0.1, 0.1, 0.1);
     gl::drawSolidRect(Rectf( 0,0,w,35));
@@ -107,20 +145,21 @@ void ArmViewport::draw()
     
     gl::pushMatrices();
       gl::setMatrices(camera );
-    //root->drawCurrent();
-   // root->drawTarget();
+   
     gl::drawCoordinateFrame (300,0,0);
     gl::color(ColorA(1,1,1,0.5));
     gl::drawLine(Vec3f(130,0,0), Vec3f(130,0,2000));
      gl::drawLine(Vec3f(-130,0,0), Vec3f(-130,0,2000));
     
+   
     
     
        root->drawTarget();
 
    root->drawCurrent();
     
-    
+    position->drawTarget();
+    position->drawCurrent();
     gl::popMatrices();
     
     glViewport (0  , 0 , getWindowWidth(), getWindowHeight());

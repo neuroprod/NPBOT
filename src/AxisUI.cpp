@@ -26,7 +26,7 @@ void AxisUI::setup(AxisData * _axisData,int x, int y)
     gui->addWidgetRight(new ciUILabelButton(80, false, "-", CI_UI_FONT_MEDIUM,"-"));
   
      gui->registerUIEvents(this, &AxisUI::guiEvent);
-
+    isDirty=false;
 }
 void AxisUI::guiEvent(ciUIEvent *event)
 {
@@ -40,12 +40,12 @@ void AxisUI::guiEvent(ciUIEvent *event)
     {
         
         axisData->addUnits(step);
-    
+        isDirty =true;
     
     }else if(name=="-")
     {
         axisData->addUnits(-step);
-    
+        isDirty =true;
     }
 }
 void AxisUI::update()

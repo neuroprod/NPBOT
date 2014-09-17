@@ -44,7 +44,8 @@ public:
     cinder::Matrix44f globalMatrix2;
     
     std::function<void( )> customDraw;
-    
+    ColorA nodeColor;
+    ColorA ambientColor;
     void drawNode1();
     void drawNode2();
     void drawNode3();

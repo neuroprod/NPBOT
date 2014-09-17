@@ -14,6 +14,7 @@
 #include "ciUI.h"
 #include "cinder/Camera.h"
 #include "ArmNode.h"
+#include "ArmPosition.h"
 using namespace ci;
 using namespace ci::app;
 using namespace std;
@@ -29,6 +30,7 @@ class ArmViewport
     void setup(int x,int y,int w,int h);
     void update();
     void draw();
+    void setView(int id);
     void guiEvent(ciUIEvent *event);
     ci::Area viewArea;
     ciUIDropDownList *ddl;
@@ -41,6 +43,7 @@ class ArmViewport
     ciUICanvas *gui;
     Vec3f center;
  ArmNode * root;
+    ArmPosition * position;
 
 };
 #endif /* defined(__NPBOT__ArmViewport__) */

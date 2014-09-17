@@ -177,26 +177,33 @@ void NPBOTApp::setup()
     
     
     posX+=stepX;
-    view1.setup(posX,10,1300,710);
-    int vpY =710+20;
-    view2.setup(posX,vpY,500,400);
-    view3.setup(posX+510,vpY,1300-500-10,400);
-    
+    view1.setup(posX,10,1300,610);
+    int vpY =610+20;
+    view2.setup(posX,vpY,500,500);
+    view2.setView(3);
+    view3.setup(posX+510,vpY,1300-500-10,500);
+    view3.setView(2);
     view1.root =root;
     view2.root =root;
     view3.root =root;
     
     
+    
     armPosition.setup();
-     posY+=stepY;
+    view1.position =&armPosition;
+    view2.position =&armPosition;
+    view3.position =&armPosition;
+    
+    
+    posY+=stepY;
     
     stepY =90;
     
-    xposUI.setup(&armPosition.x, &armPosition.targetX,10, posY, "X", 100, 0);
+    xposUI.setup(&armPosition.x, &armPosition.targetX,10, posY, "X", 1000, -1000);
     UIpositions.push_back(&xposUI);
    
     posY+=stepY;
-    yposUI.setup(&armPosition.y, &armPosition.targetY,10, posY, "Y", 100, 0);
+    yposUI.setup(&armPosition.y, &armPosition.targetY,10, posY, "Y", 1000, -1000);
     UIpositions.push_back(&yposUI);
     
     posY+=stepY;
@@ -204,15 +211,15 @@ void NPBOTApp::setup()
     UIpositions.push_back(&zposUI);
     
     posY+=stepY;
-    xRotposUI.setup(&armPosition.rotX, &armPosition.targetRotX,10, posY, "rot X", 100, 0);
+    xRotposUI.setup(&armPosition.rotX, &armPosition.targetRotX,10, posY, "rot X", 360, -360);
     UIpositions.push_back(&xRotposUI);
     
     posY+=stepY;
-    yRotposUI.setup(&armPosition.rotY, &armPosition.targetRotY,10, posY, "rot Y", 100, 0);
+    yRotposUI.setup(&armPosition.rotY, &armPosition.targetRotY,10, posY, "rot Y", 360, -360);
     UIpositions.push_back(&yRotposUI);
     
     posY+=stepY;
-    zRotposUI.setup(&armPosition.rotZ, &armPosition.targetRotZ,10, posY, "rot Z", 100, 0);
+    zRotposUI.setup(&armPosition.rotZ, &armPosition.targetRotZ,10, posY, "rot Z", 360, -360);
     UIpositions.push_back(&zRotposUI);
     
     
@@ -224,6 +231,10 @@ void NPBOTApp::setup()
     serialHandler.axisData.push_back(&axis5);
     serialHandler.axisData.push_back(&axis6);
     
+    //// start pos
+    root->update();
+    armPosition.setPositionsFromRotations(axis6Node);
+    
 }
 
 void NPBOTApp::mouseDown( MouseEvent event )
@@ -233,15 +244,47 @@ void NPBOTApp::mouseDown( MouseEvent event )
 void NPBOTApp::update()
 {
     serialHandler.update();
+    
+    bool axisIsDirty =false;
+    
+    for (int i=0;i<UIAxxisses.size();i++)
+    {
+        if(UIAxxisses[i]->isDirty){
+           axisIsDirty =true;
+            UIAxxisses[i]->isDirty =false;
+        }
+    }
+    
+    if(axisIsDirty)
+    {
+        root->update();
+        armPosition.setPositionsFromRotations(axis6Node);
+    
+    }
+    
+    
+    
+    
+    
+    
+    
+    
     for (int i=0;i<UIAxxisses.size();i++)
     {
         UIAxxisses[i]->update();
     }
     for (int i=0;i<UIpositions.size();i++)
     {
-        UIpositions[i]->update();
+        UIpositions[i]->update(axisIsDirty);
     }
     root->update();
+    
+    
+    
+    
+    
+    
+    
     view1.update();
     view2.update();
     view3.update();

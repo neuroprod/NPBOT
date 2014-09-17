@@ -20,13 +20,13 @@ class PositionUI
 public:
     PositionUI(){};
     void setup(float * value,float *targetValue, int x,int y, string name, int max,int min);
-    void update();
+    void update(bool axisIsDirty);
     void draw();
     void guiEvent(ciUIEvent *event);
     ciUICanvas *gui;
     
     ciUILabel *labelMain;
-    
+    ciUISlider *sliderMain;
     
     float * value;
     float * targetValue;
