@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>8C97B7AF-A59A-4FE0-A3F8-5A914DF066B6</string>
+	<key>IDESourceControlProjectName</key>
+	<string>NPBOT</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>A90BE7A9-1692-4A10-A320-41C953083155</key>
+		<string>https://github.com/neuroprod/NPBOT.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>xcode/NPBOT.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>A90BE7A9-1692-4A10-A320-41C953083155</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/neuroprod/NPBOT.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>A90BE7A9-1692-4A10-A320-41C953083155</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>A90BE7A9-1692-4A10-A320-41C953083155</string>
+			<key>IDESourceControlWCCName</key>
+			<string>NPBOT</string>
+		</dict>
+	</array>
+</dict>
+</plist>

@@ -28,6 +28,6 @@ public:
     float step;
     ciUILabel * labelCurrent;
     ciUILabel * labelTarget;
-    bool isDirty;
+   
 };
 #endif /* defined(__NPBOT__AxisUI__) */

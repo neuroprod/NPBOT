@@ -38,7 +38,7 @@ bool SerialHandler::sendHoming()
     if(!isDone)return false;
     if(!isonline)return true;
     
-   // isDone =false;
+    isDone =false;
     
     
     serial.writeByte(0x00);
@@ -56,7 +56,7 @@ bool SerialHandler::sendPositions()
     if(!isDone)return false;
     if(!isonline)return true;
     
-    //isDone =false;
+    isDone =false;
     
     serial.writeByte(0x01);
     //command.write(&serial );
@@ -74,9 +74,37 @@ bool SerialHandler::sendPositions()
     return true;
 }
 
+bool SerialHandler::setPositions()
+{
+    //if(!isDone)return false;
+    if(!isonline)return true;
+    
+    //isDone =false;
+    
+    serial.writeByte(0x02);
+    //command.write(&serial );
+    
+    for(int i=0;i<axisData.size();i++)
+    {
+        writeInt(axisData[i]->targetStep);
+        
+    }
+    
+    
+    
+    
+    serial.writeByte(0xff);
+    return true;
+}
+
 
 void SerialHandler::writeInt (int val)
 {
+    if(val<0)
+    {
+     throw std::invalid_argument( "received negative value" );
+    
+    }
     ci::app::console()<<"sendVal"<<val<<std::endl;
     float workVal = (float) val;
     int val1 = floor(workVal/10000);
@@ -106,7 +134,24 @@ void SerialHandler::update()
 		}
 		
 		
-        console() <<"input"<< (int)b << endl;
+        console() <<"input byte"<< (int)b << endl;
+        if(b==5)
+        {
+            console() <<"homing place done"<< (int)b << endl;
+            
+            for(int i=0;i<axisData.size();i++)
+            {
+              // axisData[i]->targetStep =0;
+               // axisData[i]->currentStep =0;
+                //axisData[i]->isDirty =true;
+                axisData[i]->setHome();
+            }
+            setPositions();
+        }
+        else if(b==6){
+            console() <<"homing  done" << endl;
+            
+                    }
         isDone =true;
 		//serial.flush();
 	}

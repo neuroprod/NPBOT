@@ -77,9 +77,9 @@ void ArmViewport::setView(int id)
         
         name ="LEFT";
         
-        float windowScale =600;
+        float windowScale =1000;
         float asp =(float)w/h;
-        center.set(500, 500, 1000);
+        center.set(200, 500, 1000);
         camera.setOrtho(windowScale, -windowScale, -windowScale/asp, windowScale/asp, 100, 7000);
         camera.lookAt( Vec3f(0,0,2000)+center, center, Vec3f(0,1,0) );
     }

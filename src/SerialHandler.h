@@ -26,6 +26,7 @@ class SerialHandler
     void setup();
     bool sendHoming();
     bool sendPositions();
+    bool setPositions();
     void update();
     void writeInt (int val);
     bool isDone;

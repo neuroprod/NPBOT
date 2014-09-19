@@ -96,7 +96,7 @@ void NPBOTApp::setup()
     int posY =220-40;
     int stepY=210;
     int stepX=200;
-    axis1.setup(0, "A1 z-axis", 75.0f/1600.0f, 0, 400000, "mm");
+    axis1.setup(0, "A1 z-axis",1900, 1600.0f/75.5f, 0, 190, "mm",0);
     axisUI1.setup(&axis1,posX,posY);
     UIAxxisses.push_back(&axisUI1);
     
@@ -104,29 +104,29 @@ void NPBOTApp::setup()
     
   
     posX+=stepX;
-    axis2.setup(0, "A2 arm 1", 400.0f* 50 /360, 0, 400000, "deg");
+    axis2.setup(0, "A2 arm 1",156 ,400.0f* 40 /360, 0, 156, "deg",0);
     axisUI2.setup(&axis2,posX,posY);
     UIAxxisses.push_back(&axisUI2);
     
     
     posX+=stepX;
-    axis3.setup(0, "A3 arm2", 400.0f* 40 /360, 0, 400000, "deg");
+    axis3.setup(0, "A3 arm2",-145, 400.0f* 50 /360, 0, 180, "deg",180);
     axisUI3.setup(&axis3,posX,posY);
     UIAxxisses.push_back(&axisUI3);
     
     posX=10;
     posY+=stepY;
-    axis4.setup(0, "A4 pols rot",  400.0f* 10 /360, 0, 400000, "°deg");
+    axis4.setup(0, "A4 pols rot",0,  400.0f* 10 /360, 0, 180, "°deg",0);
     axisUI4.setup(&axis4,posX,posY);
     UIAxxisses.push_back(&axisUI4);
     
     posX+=stepX;
-    axis5.setup(0, "A5 posl bend", 400.0f* 10 /360, 0, 400000, "deg");
+    axis5.setup(0, "A5 posl bend",0, 400.0f* 10 /360, 0, 180, "deg",0);
     axisUI5.setup(&axis5,posX,posY);
     UIAxxisses.push_back(&axisUI5);
     
     posX+=stepX;
-    axis6.setup(0, "A6 hand rot", 75.0f/1600.0f, 0, 400000, "deg");
+    axis6.setup(0, "A6 hand rot",0 ,75.0f/1600.0f, 0, 180, "deg",0);
     axisUI6.setup(&axis6,posX,posY);
     UIAxxisses.push_back(&axisUI6);
     
@@ -249,9 +249,9 @@ void NPBOTApp::update()
     
     for (int i=0;i<UIAxxisses.size();i++)
     {
-        if(UIAxxisses[i]->isDirty){
+        if(UIAxxisses[i]->axisData->isDirty){
            axisIsDirty =true;
-            UIAxxisses[i]->isDirty =false;
+            UIAxxisses[i]->axisData->isDirty =false;
         }
     }
     

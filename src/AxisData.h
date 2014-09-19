@@ -22,12 +22,12 @@ class AxisData
 public:
     AxisData(){};
     
-    void setup(int id, string name, float _stepsToUnit, int _minSteps, int maxSteps, string _unit );
-    
+    void setup(int id, string name,float homePos, float _stepsToUnit, int _minSteps, int maxSteps, string _unit, float offset );
+    void setHome();
     float targetStep;
     float currentStep;
-    
-    
+    float homePos;
+    float offset;
     float stepsToUnit;
     string unit;
     string name;
@@ -41,7 +41,7 @@ public:
     float getCurrentInUnits();
     string getTargetForView();
     string getCurrentForView();
-    
+    bool isDirty;
     bool isHome;
     void addUnits(float unit);
 };
