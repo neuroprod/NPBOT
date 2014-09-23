@@ -21,6 +21,7 @@
 		01B1639D19C735DF00F93D3C /* ArmPosition.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 01B1639B19C735DF00F93D3C /* ArmPosition.cpp */; };
 		01B163A019C737BA00F93D3C /* ArmNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 01B1639E19C737BA00F93D3C /* ArmNode.cpp */; };
 		01B163A319C81BF100F93D3C /* SerialHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 01B163A119C81BF100F93D3C /* SerialHandler.cpp */; };
+		01B2E43119D170D5006E8BD5 /* HandControler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 01B2E42F19D170D5006E8BD5 /* HandControler.cpp */; };
 		196A151BDD7B4D649A5B4E68 /* NPBOTApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 73E3A496DB794C37A6099900 /* NPBOTApp.cpp */; };
 		47F9BB7EDBB3410BA825646F /* CinderApp.icns in Resources */ = {isa = PBXBuildFile; fileRef = BE08E45AB5AB4B0BBE5A0E8A /* CinderApp.icns */; };
 		5323E6B20EAFCA74003A9687 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5323E6B10EAFCA74003A9687 /* CoreVideo.framework */; };
@@ -51,6 +52,8 @@
 		01B1639F19C737BA00F93D3C /* ArmNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArmNode.h; sourceTree = "<group>"; };
 		01B163A119C81BF100F93D3C /* SerialHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SerialHandler.cpp; path = ../src/SerialHandler.cpp; sourceTree = "<group>"; };
 		01B163A219C81BF100F93D3C /* SerialHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SerialHandler.h; path = ../src/SerialHandler.h; sourceTree = "<group>"; };
+		01B2E42F19D170D5006E8BD5 /* HandControler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HandControler.cpp; sourceTree = "<group>"; };
+		01B2E43019D170D5006E8BD5 /* HandControler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HandControler.h; sourceTree = "<group>"; };
 		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
@@ -95,6 +98,8 @@
 				01B1639619C7356B00F93D3C /* LogUI.h */,
 				01B1639819C7358400F93D3C /* PositionUI.cpp */,
 				01B1639919C7358400F93D3C /* PositionUI.h */,
+				01B2E42F19D170D5006E8BD5 /* HandControler.cpp */,
+				01B2E43019D170D5006E8BD5 /* HandControler.h */,
 			);
 			name = ui;
 			sourceTree = "<group>";
@@ -292,6 +297,7 @@
 				01B1639319C71BB800F93D3C /* ArmViewport.cpp in Sources */,
 				01B1638F19C7086900F93D3C /* AxisData.cpp in Sources */,
 				01B163A319C81BF100F93D3C /* SerialHandler.cpp in Sources */,
+				01B2E43119D170D5006E8BD5 /* HandControler.cpp in Sources */,
 				196A151BDD7B4D649A5B4E68 /* NPBOTApp.cpp in Sources */,
 				01B1639019C7086900F93D3C /* AxisUI.cpp in Sources */,
 			);

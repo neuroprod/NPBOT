@@ -33,7 +33,12 @@ void AxisData::setHome()
     targetStep = currentStep = (homePos+offset) *stepsToUnit;
 
 }
+void AxisData::setUnits(float _unit)
+{
+    isDirty =true;
+ targetStep  = (_unit+offset) *stepsToUnit;
 
+}
 void AxisData::addUnits(float _unit)
 {
     targetStep += _unit *stepsToUnit;
@@ -43,11 +48,11 @@ void AxisData::addUnits(float _unit)
 
 float AxisData::getTargetInUnits()
 {
-    return targetStep/stepsToUnit +offset;
+    return targetStep/stepsToUnit -offset;
 
 }
 float AxisData::getCurrentInUnits(){
-    return  currentStep/stepsToUnit +offset;
+    return  currentStep/stepsToUnit -offset;
     
 }
 string AxisData::getTargetForView()

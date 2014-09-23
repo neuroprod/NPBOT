@@ -24,14 +24,20 @@ class SerialHandler
     public :
     SerialHandler(){}
     void setup();
+    
+    bool sendHandPos(int pos1, int pos2);
+    
     bool sendHoming();
     bool sendPositions();
     bool setPositions();
     void update();
+     void updateHand();
     void writeInt (int val);
     bool isDone;
     
     Serial serial;
+    Serial serialHand;
+    bool handisonline;
     bool isonline;
     vector<AxisData *> axisData;
 };

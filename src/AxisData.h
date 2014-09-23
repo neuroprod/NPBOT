@@ -24,6 +24,7 @@ public:
     
     void setup(int id, string name,float homePos, float _stepsToUnit, int _minSteps, int maxSteps, string _unit, float offset );
     void setHome();
+    void setUnits(float _unit);
     float targetStep;
     float currentStep;
     float homePos;

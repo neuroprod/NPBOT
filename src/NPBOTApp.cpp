@@ -7,7 +7,7 @@
 #include "PositionUI.h"
 #include "ArmPosition.h"
 #include "SerialHandler.h"
-
+#include "HandControler.h"
 #include "ArmNode.h"
 using namespace ci;
 using namespace ci::app;
@@ -67,11 +67,13 @@ class NPBOTApp : public AppNative {
     ArmNode * axis2Node;
     ArmNode * root;
     
+    HandControler handControler;
     
 };
 void NPBOTApp::guiEvent(ciUIEvent *event)
 {
     string name = event->widget->getName();
+    cout<<" -->"<<name<<endl;;
     if(name == "SEND")
     {
         serialHandler.sendPositions();
@@ -81,6 +83,36 @@ void NPBOTApp::guiEvent(ciUIEvent *event)
         serialHandler.sendHoming();
         
         
+    }else if(name =="Neutral")
+    {
+        
+        
+        axis1.setUnits(1500);
+         axis2.setUnits(116);
+        axis3.setUnits(-115);
+        axis4.setUnits(0);
+         axis5.setUnits(0);
+         axis6.setUnits(0);
+    }else if(name =="prestep1")
+    {
+        
+      
+        axis1.setUnits(1500);
+        axis2.setUnits(36);
+        axis3.setUnits(-105);
+        axis4.setUnits(-65);
+        axis5.setUnits(85);
+        axis6.setUnits(0);
+    }else if(name =="prestep2")
+    {
+        
+       
+        axis1.setUnits(1188);
+        axis2.setUnits(116);
+        axis3.setUnits(-115);
+        axis4.setUnits(0);
+        axis5.setUnits(0);
+        axis6.setUnits(0);
     }
 
 }
@@ -89,9 +121,18 @@ void NPBOTApp::setup()
     setWindowSize(1920, 1160);
     setWindowPos(0, 0);
     gui = new ciUICanvas(10,10,300,200-40);
-    gui->addWidgetRight(new ciUILabelButton(100, false, "SEND", CI_UI_FONT_MEDIUM ,"SEND"));
     gui->addWidgetRight(new ciUILabelButton(100, false, "HOME", CI_UI_FONT_MEDIUM,"HOME"));
+    gui->addWidgetRight(new ciUILabelButton(100, false, "SEND", CI_UI_FONT_MEDIUM ,"SEND"));
+    
+      gui->addWidgetDown(new ciUILabelButton(100, false, "Neutral", CI_UI_FONT_MEDIUM,"neutral"));
+      gui->addWidgetDown (new ciUILabelButton(100, false, "prestep1", CI_UI_FONT_MEDIUM,"prestep1"));
+      gui->addWidgetRight(new ciUILabelButton(100, false, "prestep2", CI_UI_FONT_MEDIUM,"prestep2"));
       gui->registerUIEvents(this, &NPBOTApp::guiEvent);
+    
+    
+    
+    handControler.setup(400,10);
+    
     int posX=10;
     int posY =220-40;
     int stepY=210;
@@ -116,17 +157,17 @@ void NPBOTApp::setup()
     
     posX=10;
     posY+=stepY;
-    axis4.setup(0, "A4 pols rot",0,  400.0f* 10 /360, 0, 180, "°deg",0);
+    axis4.setup(0, "A4 pols rot",-100,  400.0f* 10 /360, 0, 180, "deg",100);
     axisUI4.setup(&axis4,posX,posY);
     UIAxxisses.push_back(&axisUI4);
     
     posX+=stepX;
-    axis5.setup(0, "A5 posl bend",0, 400.0f* 10 /360, 0, 180, "deg",0);
+    axis5.setup(0, "A5 posl bend",-105, 400.0f* 10 /360, 0, 180, "deg",105);
     axisUI5.setup(&axis5,posX,posY);
     UIAxxisses.push_back(&axisUI5);
     
     posX+=stepX;
-    axis6.setup(0, "A6 hand rot",0 ,75.0f/1600.0f, 0, 180, "deg",0);
+    axis6.setup(0, "A6 hand rot",0 ,400.0f, 0, 180, "deg",0);
     axisUI6.setup(&axis6,posX,posY);
     UIAxxisses.push_back(&axisUI6);
     
@@ -234,7 +275,8 @@ void NPBOTApp::setup()
     //// start pos
     root->update();
     armPosition.setPositionsFromRotations(axis6Node);
-    
+    handControler.serialHandler =&serialHandler;
+
 }
 
 void NPBOTApp::mouseDown( MouseEvent event )
@@ -244,7 +286,7 @@ void NPBOTApp::mouseDown( MouseEvent event )
 void NPBOTApp::update()
 {
     serialHandler.update();
-    
+    serialHandler.updateHand();
     bool axisIsDirty =false;
     
     for (int i=0;i<UIAxxisses.size();i++)
@@ -299,7 +341,7 @@ void NPBOTApp::draw()
 	gl::clear( Color( 0.2, 0.2, 0.2 ) );
      gui->draw();
     
-    
+    handControler.draw();
     for (int i=0;i<UIAxxisses.size();i++)
     {
         UIAxxisses[i]->draw();

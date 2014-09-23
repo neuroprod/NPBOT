@@ -14,7 +14,7 @@ void SerialHandler::setup()
 {
     isDone =true;
   
-	
+	///////// MAIN
 	try {
 		Serial::Device dev = Serial::findDeviceByNameContains("tty.usbmodem1411");
 		serial = Serial( dev, 115200);
@@ -28,11 +28,82 @@ void SerialHandler::setup()
         
         const vector<Serial::Device> &devices( Serial::getDevices() );
         for( vector<Serial::Device>::const_iterator deviceIt = devices.begin(); deviceIt != devices.end(); ++deviceIt ) {
-            console() << "Device: " << deviceIt->getName() << endl;
+            console() << "Device for MAIN?: " << deviceIt->getName() << endl;
         }
 	}
     
+    
+    
+    
+    
+    //////////// HAND
+    try {
+		Serial::Device dev = Serial::findDeviceByNameContains("tty.usbserial-14P52911");
+		serialHand = Serial( dev, 9600);
+        console() << "Serial Hand Connected" << std::endl;
+        handisonline =true;
+	}
+	catch( ... ) {
+		console() << "There was an error initializing the serial device Hand!" << std::endl;
+		//exit( -1 );
+        handisonline =false;
+        
+        const vector<Serial::Device> &devices( Serial::getDevices() );
+        for( vector<Serial::Device>::const_iterator deviceIt = devices.begin(); deviceIt != devices.end(); ++deviceIt ) {
+            console() << "Device For HAND?: " << deviceIt->getName() << endl;
+        }
+	}
+    
+    
 }
+
+
+//hand
+bool SerialHandler::sendHandPos(int pos1,int pos2)
+{
+    
+    if(!handisonline )return true;
+    
+    isDone =false;
+    
+    
+    serialHand.writeByte(pos1);
+    serialHand.writeByte(pos2);
+    
+    
+    
+    
+    
+    serialHand.writeByte(0xff);
+    return true;
+}
+
+
+void SerialHandler::updateHand()
+{
+    if(!handisonline)return ;
+    if (serialHand.getNumBytesAvailable()>0)
+	{
+		uint8 b;
+		try
+        {
+            b = serialHand.readByte();
+		}
+        catch(SerialTimeoutExc e)
+        {
+			console() << "timeout" << endl;
+		}
+        console() <<"input byte"<< (int)b << endl;
+    }
+    
+    
+    
+}
+
+
+
+
+////////// main
 bool SerialHandler::sendHoming()
 {
     if(!isDone)return false;
@@ -134,7 +205,7 @@ void SerialHandler::update()
 		}
 		
 		
-        console() <<"input byte"<< (int)b << endl;
+       // console() <<"input byte"<< (int)b << endl;
         if(b==5)
         {
             console() <<"homing place done"<< (int)b << endl;
