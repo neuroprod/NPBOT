@@ -59,14 +59,49 @@ void SerialHandler::setup()
 
 
 //hand
-bool SerialHandler::sendHandPos(int pos1,int pos2)
+bool SerialHandler::sendHandRelease()
 {
     
     if(!handisonline )return true;
     
-    isDone =false;
+    
+    console()<<"hand release"<<endl;
+    serialHand.writeByte(2);
+   
     
     
+    
+    
+    
+    serialHand.writeByte(0xff);
+    return true;
+}
+bool SerialHandler::sendHandGrab()
+{
+    
+    if(!handisonline )return true;
+     console()<<"hand grab"<<endl;
+    
+    
+    serialHand.writeByte(1);
+    serialHand.writeByte(60);
+    serialHand.writeByte(100);
+    
+    
+    
+    
+    
+    serialHand.writeByte(0xff);
+    return true;
+}
+bool SerialHandler::sendHandPos(int pos1,int pos2)
+{
+    
+    if(!handisonline )return true;
+     console()<<"hand set"<<endl;
+    
+    
+     serialHand.writeByte(3);
     serialHand.writeByte(pos1);
     serialHand.writeByte(pos2);
     
@@ -107,7 +142,7 @@ void SerialHandler::updateHand()
 bool SerialHandler::sendHoming()
 {
     if(!isDone)return false;
-    if(!isonline)return true;
+    if(!isonline)return false;
     
     isDone =false;
     
@@ -125,7 +160,7 @@ bool SerialHandler::sendHoming()
 bool SerialHandler::sendPositions()
 {
     if(!isDone)return false;
-    if(!isonline)return true;
+    if(!isonline)return false;
     
     isDone =false;
     
@@ -203,10 +238,15 @@ void SerialHandler::update()
 		} catch(SerialTimeoutExc e) {
 			console() << "timeout" << endl;
 		}
-		
-		
-       // console() <<"input byte"<< (int)b << endl;
-        if(b==5)
+		console() <<"input byte"<< (int)b << endl;
+		if(b==4)
+        {
+        
+            console() <<"positioning done" << endl;
+        
+        }
+       
+        else if(b==5)
         {
             console() <<"homing place done"<< (int)b << endl;
             

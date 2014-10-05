@@ -26,6 +26,7 @@ public:
     AxisData * axisData;
     
     float step;
+    ciUISlider *stepSlider;
     ciUILabel * labelCurrent;
     ciUILabel * labelTarget;
    

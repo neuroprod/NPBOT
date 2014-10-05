@@ -11,6 +11,7 @@
 
 #include <iostream>
 #include "ArmNode.h"
+#include "AxisData.h"
 class ArmPosition
 {
 
@@ -27,6 +28,7 @@ public:
     
     
     }
+    void getCircleIntersections(vector<Vec2f> &result, Vec2f center1, float radius1,Vec2f center2, float radius2);
     float x;
     float y;
     float z;
@@ -42,13 +44,20 @@ public:
     float targetRotY;
     float targetRotZ;
     
-    void setPositionsFromRotations(ArmNode * endNode);
+    void setPositionsFromRotations();
     void setRotationsFromPositions();
-    
+    vector<AxisData *> axisDatas;
+    ArmNode *rootNode;
+    ArmNode * endNode;
     void drawCurrent();
     void drawTarget();
     void drawPosition(float targetX, float targetY,float targetZ,float targetRotX,float targetRotY,float targetRotZ);
     
-
+    bool fail;
+    
+    Vec4f targetMain;
+    
+    Vec4f targetInvert;
+     Vec4f targetInvert2;
 };
 #endif /* defined(__NPBOT__ArmTarget__) */

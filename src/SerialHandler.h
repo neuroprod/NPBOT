@@ -26,7 +26,8 @@ class SerialHandler
     void setup();
     
     bool sendHandPos(int pos1, int pos2);
-    
+    bool sendHandRelease();
+    bool sendHandGrab();
     bool sendHoming();
     bool sendPositions();
     bool setPositions();

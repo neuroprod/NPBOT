@@ -8,14 +8,14 @@
 
 #include "AxisData.h"
 #include "cinder/Utilities.h"
-void AxisData::setup(int _id, string _name,float _homePos, float _stepsToUnit, int _minSteps, int _maxSteps, string _unit ,float _offset)
+void AxisData::setup(int _id, string _name,float _homePos, float _stepsToUnit, float _minUnits, float _maxUnits, string _unit ,float _offset)
 {
     homePos =_homePos;
     id =_id;
     name =_name;
     stepsToUnit =_stepsToUnit;
-    minSteps =_minSteps;
-    maxSteps =_maxSteps;
+    minUnits =_minUnits;
+    maxUnits =_maxUnits;
     unit = _unit;
     offset=_offset;
     targetStep =0;
@@ -23,7 +23,7 @@ void AxisData::setup(int _id, string _name,float _homePos, float _stepsToUnit, i
     isHome =false;
     isDirty =true;
     targetStep = currentStep = (homePos+offset) *stepsToUnit;
-    console()<< name<<" target: " << targetStep <<endl;
+   // console()<< name<<" target: " << targetStep <<endl;
 }
 void AxisData::setHome()
 {
@@ -35,14 +35,21 @@ void AxisData::setHome()
 }
 void AxisData::setUnits(float _unit)
 {
-    isDirty =true;
+  
+    if(_unit<minUnits)_unit =minUnits;
+    if(_unit>maxUnits)_unit =maxUnits;
+    //isDirty =true;
  targetStep  = (_unit+offset) *stepsToUnit;
 
 }
 void AxisData::addUnits(float _unit)
 {
+    
+    
+    
+    
     targetStep += _unit *stepsToUnit;
-      console()<< name<<" targetcurrent: " << targetStep <<endl;
+    //  console()<< name<<" targetcurrent: " << targetStep <<endl;
 
 }
 

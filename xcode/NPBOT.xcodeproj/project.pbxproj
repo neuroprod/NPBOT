@@ -12,6 +12,9 @@
 		00B784B40FF439BC000DE1D7 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00B784B00FF439BC000DE1D7 /* AudioToolbox.framework */; };
 		00B784B50FF439BC000DE1D7 /* AudioUnit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00B784B10FF439BC000DE1D7 /* AudioUnit.framework */; };
 		00B784B60FF439BC000DE1D7 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00B784B20FF439BC000DE1D7 /* CoreAudio.framework */; };
+		010D657419E13D490038AA8F /* MainTaskHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 010D657219E13D490038AA8F /* MainTaskHandler.cpp */; };
+		010D657D19E1722F0038AA8F /* ArmNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 010D657B19E1722F0038AA8F /* ArmNode.cpp */; };
+		010D658219E172740038AA8F /* HandControler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 010D658019E172740038AA8F /* HandControler.cpp */; };
 		01B1638419C6DCAA00F93D3C /* NewMediaFett.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 01B1638319C6DCAA00F93D3C /* NewMediaFett.ttf */; };
 		01B1638F19C7086900F93D3C /* AxisData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 01B1638B19C7086900F93D3C /* AxisData.cpp */; };
 		01B1639019C7086900F93D3C /* AxisUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 01B1638D19C7086900F93D3C /* AxisUI.cpp */; };
@@ -19,9 +22,7 @@
 		01B1639719C7356B00F93D3C /* LogUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 01B1639519C7356B00F93D3C /* LogUI.cpp */; };
 		01B1639A19C7358400F93D3C /* PositionUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 01B1639819C7358400F93D3C /* PositionUI.cpp */; };
 		01B1639D19C735DF00F93D3C /* ArmPosition.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 01B1639B19C735DF00F93D3C /* ArmPosition.cpp */; };
-		01B163A019C737BA00F93D3C /* ArmNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 01B1639E19C737BA00F93D3C /* ArmNode.cpp */; };
 		01B163A319C81BF100F93D3C /* SerialHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 01B163A119C81BF100F93D3C /* SerialHandler.cpp */; };
-		01B2E43119D170D5006E8BD5 /* HandControler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 01B2E42F19D170D5006E8BD5 /* HandControler.cpp */; };
 		196A151BDD7B4D649A5B4E68 /* NPBOTApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 73E3A496DB794C37A6099900 /* NPBOTApp.cpp */; };
 		47F9BB7EDBB3410BA825646F /* CinderApp.icns in Resources */ = {isa = PBXBuildFile; fileRef = BE08E45AB5AB4B0BBE5A0E8A /* CinderApp.icns */; };
 		5323E6B20EAFCA74003A9687 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5323E6B10EAFCA74003A9687 /* CoreVideo.framework */; };
@@ -35,6 +36,16 @@
 		00B784B00FF439BC000DE1D7 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		00B784B10FF439BC000DE1D7 /* AudioUnit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioUnit.framework; path = System/Library/Frameworks/AudioUnit.framework; sourceTree = SDKROOT; };
 		00B784B20FF439BC000DE1D7 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		010D657219E13D490038AA8F /* MainTaskHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MainTaskHandler.cpp; path = ../src/MainTaskHandler.cpp; sourceTree = "<group>"; };
+		010D657319E13D490038AA8F /* MainTaskHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainTaskHandler.h; path = ../src/MainTaskHandler.h; sourceTree = "<group>"; };
+		010D657519E144EC0038AA8F /* Task.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Task.h; sourceTree = "<group>"; };
+		010D657819E154DA0038AA8F /* SnapTask.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SnapTask.h; path = ../src/SnapTask.h; sourceTree = "<group>"; };
+		010D657B19E1722F0038AA8F /* ArmNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ArmNode.cpp; path = ../src/ArmNode.cpp; sourceTree = "<group>"; };
+		010D657C19E1722F0038AA8F /* ArmNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ArmNode.h; path = ../src/ArmNode.h; sourceTree = "<group>"; };
+		010D657E19E172500038AA8F /* CaptureImage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CaptureImage.h; path = ../src/CaptureImage.h; sourceTree = "<group>"; };
+		010D657F19E1725B0038AA8F /* HomingTask.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HomingTask.h; path = ../src/HomingTask.h; sourceTree = "<group>"; };
+		010D658019E172740038AA8F /* HandControler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = HandControler.cpp; path = ../src/HandControler.cpp; sourceTree = "<group>"; };
+		010D658119E172740038AA8F /* HandControler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HandControler.h; path = ../src/HandControler.h; sourceTree = "<group>"; };
 		01B1638319C6DCAA00F93D3C /* NewMediaFett.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NewMediaFett.ttf; sourceTree = "<group>"; };
 		01B1638B19C7086900F93D3C /* AxisData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AxisData.cpp; path = ../src/AxisData.cpp; sourceTree = "<group>"; };
 		01B1638C19C7086900F93D3C /* AxisData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AxisData.h; path = ../src/AxisData.h; sourceTree = "<group>"; };
@@ -48,12 +59,8 @@
 		01B1639919C7358400F93D3C /* PositionUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PositionUI.h; path = ../src/PositionUI.h; sourceTree = "<group>"; };
 		01B1639B19C735DF00F93D3C /* ArmPosition.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ArmPosition.cpp; path = ../src/ArmPosition.cpp; sourceTree = "<group>"; };
 		01B1639C19C735DF00F93D3C /* ArmPosition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ArmPosition.h; path = ../src/ArmPosition.h; sourceTree = "<group>"; };
-		01B1639E19C737BA00F93D3C /* ArmNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ArmNode.cpp; sourceTree = "<group>"; };
-		01B1639F19C737BA00F93D3C /* ArmNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArmNode.h; sourceTree = "<group>"; };
 		01B163A119C81BF100F93D3C /* SerialHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SerialHandler.cpp; path = ../src/SerialHandler.cpp; sourceTree = "<group>"; };
 		01B163A219C81BF100F93D3C /* SerialHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SerialHandler.h; path = ../src/SerialHandler.h; sourceTree = "<group>"; };
-		01B2E42F19D170D5006E8BD5 /* HandControler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HandControler.cpp; sourceTree = "<group>"; };
-		01B2E43019D170D5006E8BD5 /* HandControler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HandControler.h; sourceTree = "<group>"; };
 		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
@@ -87,6 +94,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		010D657619E145990038AA8F /* mainTask */ = {
+			isa = PBXGroup;
+			children = (
+				010D657A19E165C60038AA8F /* tasks */,
+				010D657219E13D490038AA8F /* MainTaskHandler.cpp */,
+				010D657319E13D490038AA8F /* MainTaskHandler.h */,
+				010D657519E144EC0038AA8F /* Task.h */,
+				010D657E19E172500038AA8F /* CaptureImage.h */,
+			);
+			name = mainTask;
+			sourceTree = "<group>";
+		};
+		010D657A19E165C60038AA8F /* tasks */ = {
+			isa = PBXGroup;
+			children = (
+				010D657F19E1725B0038AA8F /* HomingTask.h */,
+				010D657819E154DA0038AA8F /* SnapTask.h */,
+			);
+			name = tasks;
+			sourceTree = "<group>";
+		};
 		01B1639419C71EAD00F93D3C /* ui */ = {
 			isa = PBXGroup;
 			children = (
@@ -98,8 +126,8 @@
 				01B1639619C7356B00F93D3C /* LogUI.h */,
 				01B1639819C7358400F93D3C /* PositionUI.cpp */,
 				01B1639919C7358400F93D3C /* PositionUI.h */,
-				01B2E42F19D170D5006E8BD5 /* HandControler.cpp */,
-				01B2E43019D170D5006E8BD5 /* HandControler.h */,
+				010D658019E172740038AA8F /* HandControler.cpp */,
+				010D658119E172740038AA8F /* HandControler.h */,
 			);
 			name = ui;
 			sourceTree = "<group>";
@@ -107,8 +135,8 @@
 		01B163A419C8903F00F93D3C /* model */ = {
 			isa = PBXGroup;
 			children = (
-				01B1639E19C737BA00F93D3C /* ArmNode.cpp */,
-				01B1639F19C737BA00F93D3C /* ArmNode.h */,
+				010D657B19E1722F0038AA8F /* ArmNode.cpp */,
+				010D657C19E1722F0038AA8F /* ArmNode.h */,
 				01B163A119C81BF100F93D3C /* SerialHandler.cpp */,
 				01B163A219C81BF100F93D3C /* SerialHandler.h */,
 				01B1638B19C7086900F93D3C /* AxisData.cpp */,
@@ -130,6 +158,7 @@
 		080E96DDFE201D6D7F000001 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				010D657619E145990038AA8F /* mainTask */,
 				01B163A419C8903F00F93D3C /* model */,
 				01B1639419C71EAD00F93D3C /* ui */,
 				73E3A496DB794C37A6099900 /* NPBOTApp.cpp */,
@@ -291,13 +320,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				01B1639A19C7358400F93D3C /* PositionUI.cpp in Sources */,
+				010D658219E172740038AA8F /* HandControler.cpp in Sources */,
 				01B1639D19C735DF00F93D3C /* ArmPosition.cpp in Sources */,
-				01B163A019C737BA00F93D3C /* ArmNode.cpp in Sources */,
+				010D657D19E1722F0038AA8F /* ArmNode.cpp in Sources */,
 				01B1639719C7356B00F93D3C /* LogUI.cpp in Sources */,
 				01B1639319C71BB800F93D3C /* ArmViewport.cpp in Sources */,
 				01B1638F19C7086900F93D3C /* AxisData.cpp in Sources */,
+				010D657419E13D490038AA8F /* MainTaskHandler.cpp in Sources */,
 				01B163A319C81BF100F93D3C /* SerialHandler.cpp in Sources */,
-				01B2E43119D170D5006E8BD5 /* HandControler.cpp in Sources */,
 				196A151BDD7B4D649A5B4E68 /* NPBOTApp.cpp in Sources */,
 				01B1639019C7086900F93D3C /* AxisUI.cpp in Sources */,
 			);
@@ -324,9 +354,30 @@
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
-				OTHER_LDFLAGS = "\"$(CINDER_PATH)/lib/libcinder_d.a\"";
+				OTHER_LDFLAGS = (
+					"\"$(CINDER_PATH)/lib/libcinder_d.a\"",
+					../blocks/OpenCV/lib/macosx/libopencv_calib3d.a,
+					../blocks/OpenCV/lib/macosx/libopencv_contrib.a,
+					../blocks/OpenCV/lib/macosx/libopencv_core.a,
+					../blocks/OpenCV/lib/macosx/libopencv_flann.a,
+					../blocks/OpenCV/lib/macosx/libopencv_features2d.a,
+					../blocks/OpenCV/lib/macosx/libopencv_haartraining_engine.a,
+					../blocks/OpenCV/lib/macosx/libopencv_highgui.a,
+					../blocks/OpenCV/lib/macosx/libopencv_gpu.a,
+					../blocks/OpenCV/lib/macosx/libopencv_imgproc.a,
+					../blocks/OpenCV/lib/macosx/libopencv_legacy.a,
+					../blocks/OpenCV/lib/macosx/libopencv_videostab.a,
+					../blocks/OpenCV/lib/macosx/libopencv_video.a,
+					../blocks/OpenCV/lib/macosx/libopencv_ts.a,
+					../blocks/OpenCV/lib/macosx/libopencv_photo.a,
+					../blocks/OpenCV/lib/macosx/libopencv_objdetect.a,
+					../blocks/OpenCV/lib/macosx/libopencv_ml.a,
+					../blocks/OpenCV/lib/macosx/libopencv_nonfree.a,
+					../blocks/OpenCV/lib/macosx/libopencv_stitching.a,
+				);
 				PRODUCT_NAME = NPBOT;
 				SYMROOT = ./build;
+				USER_HEADER_SEARCH_PATHS = "\"$(CINDER_PATH)/include\" ../include ../blocks/ciUI/src ../blocks/OpenCV/include/opencv2 ../blocks/OpenCV/include";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -350,6 +401,7 @@
 				PRODUCT_NAME = NPBOT;
 				STRIP_INSTALLED_PRODUCT = YES;
 				SYMROOT = ./build;
+				USER_HEADER_SEARCH_PATHS = "\"$(CINDER_PATH)/include\" ../include ../blocks/ciUI/src ../blocks/OpenCV/include/opencv2 ../blocks/OpenCV/include";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

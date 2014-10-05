@@ -31,6 +31,7 @@ public:
     float * value;
     float * targetValue;
     string name;
+    bool isDirty;
 };
 
 #endif /* defined(__NPBOT__PositionUI__) */

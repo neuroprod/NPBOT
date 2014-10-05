@@ -52,7 +52,7 @@ void ArmViewport::setView(int id)
     {
         name ="F_T_L";
         
-        float windowScale =1200;
+        float windowScale =1500;
         float asp =(float)w/h;
         center.set(500, 200, 1000);
         camera.setOrtho(windowScale, -windowScale, -windowScale/asp, windowScale/asp, 100, 7000);
@@ -77,7 +77,7 @@ void ArmViewport::setView(int id)
         
         name ="LEFT";
         
-        float windowScale =1000;
+        float windowScale =700;
         float asp =(float)w/h;
         center.set(200, 500, 1000);
         camera.setOrtho(windowScale, -windowScale, -windowScale/asp, windowScale/asp, 100, 7000);

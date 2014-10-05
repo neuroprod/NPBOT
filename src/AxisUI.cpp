@@ -21,7 +21,8 @@ void AxisUI::setup(AxisData * _axisData,int x, int y)
     
      gui->addWidgetDown(new ciUILabel("target", CI_UI_FONT_SMALL));
     labelTarget =(ciUILabel *) gui->addWidgetDown(new ciUILabel("a", CI_UI_FONT_MEDIUM));
-    gui->addWidgetDown(new ciUISlider(172,20, 0, 100, step, "step"));
+    stepSlider=new ciUISlider(172,20, 0, 100, step, "step");
+    gui->addWidgetDown( stepSlider);
     gui->addWidgetDown(new ciUILabelButton(80, false, "+", CI_UI_FONT_MEDIUM ,"+"));
     gui->addWidgetRight(new ciUILabelButton(80, false, "-", CI_UI_FONT_MEDIUM,"-"));
   
@@ -53,6 +54,7 @@ void AxisUI::update()
     labelCurrent->setLabel( axisData->getCurrentForView());
 
     labelTarget->setLabel(axisData->getTargetForView());
+    stepSlider->setValue(axisData->getCurrentInUnits());
 }
 void AxisUI::draw()
 {
