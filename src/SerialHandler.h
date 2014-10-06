@@ -22,7 +22,7 @@ using namespace std;
 class SerialHandler
 {
     public :
-    SerialHandler(){}
+    SerialHandler(){homingIsDone =false;}
     void setup();
     
     bool sendHandPos(int pos1, int pos2);
@@ -35,7 +35,7 @@ class SerialHandler
      void updateHand();
     void writeInt (int val);
     bool isDone;
-    
+    bool homingIsDone;
     Serial serial;
     Serial serialHand;
     bool handisonline;

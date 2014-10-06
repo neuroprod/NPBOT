@@ -23,35 +23,31 @@ public:
     }
     void calculate()
     {
-    
+        string r = "image" +toString(id)+".png";
+    writeImage( r, mSurface );
     
         cv::Mat input( toOcv( mSurface) ), output;
-        const int CHESSBOARD_WIDTH = 7;
-        const int CHESSBOARD_HEIGHT = 10;
-        
-        
-        
-        
-        std::vector<cv::Point2f> img_corners(CHESSBOARD_WIDTH*CHESSBOARD_HEIGHT);
-        bool found= cv::findChessboardCorners(input, cv::Size(CHESSBOARD_WIDTH, CHESSBOARD_HEIGHT),img_corners);
-        
-        
-        cv::drawChessboardCorners( input, cv::Size(CHESSBOARD_WIDTH, CHESSBOARD_HEIGHT),img_corners,found);
+       // remap(input, output, *map1, *map2,cv::INTER_LINEAR);
         
         
 		mTextureResult = gl::Texture( fromOcv( input ) );
     
     }
+    int id;
     float posZ;
     Surface8u        mSurface;
     gl::TextureRef		mTexture;
      gl::Texture		mTextureResult;
+    cv::Mat * map1;
+    cv::Mat *map2;
     void draw()
     {
+        float scale =700.0f/640.0f;
         gl::pushMatrices();
-        
-        gl::translate(Vec3f(0,0,posZ));
-        gl::rotate(Vec3f(90,0,0));
+    gl::translate(Vec3f(350,0,0));
+        gl::translate(Vec3f(0,0,posZ+350));
+        gl::rotate(Vec3f(90,0,-90));
+        gl::scale(scale,scale,scale);
         gl::draw( mTextureResult );
         gl::popMatrices();
     

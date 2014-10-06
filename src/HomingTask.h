@@ -29,7 +29,7 @@ class HomingTask:public Task
         {
            
             serialIsOnline =false;
-            wait =100;
+            wait =3;
            
         }else
         {
@@ -49,7 +49,7 @@ class HomingTask:public Task
                
         if(serialIsOnline)
         {
-        
+       if( mainTaskHandler->serialHandler->homingIsDone) taskComplete();
         
         }else
         {
@@ -65,7 +65,7 @@ class HomingTask:public Task
     }
     virtual void taskComplete()
     {
-       nextTask  = std::make_shared<SnapTask>(0);
+       nextTask  = std::make_shared<SnapTask>(200);
         
         
         Task::taskComplete();

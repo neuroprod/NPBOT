@@ -89,13 +89,27 @@ void NPBOTApp::guiEvent(ciUIEvent *event)
     }else if(name =="Neutral")
     {
         
+       // mainTaskHandler->axisDatas[1]->setUnits(71);
+       // mainTaskHandler->axisDatas[2]->setUnits(-75);
+        //mainTaskHandler->axisDatas[3]->setUnits(0);
+        //mainTaskHandler->axisDatas[4]->setUnits(-75);
+        //mainTaskHandler->axisDatas[5]->setUnits(90);
+        axis1.setUnits(1500);
+         axis2.setUnits(71);
+        axis3.setUnits(-75);
+        axis4.setUnits(0);
+         axis5.setUnits(85);
+         axis6.setUnits(90);
+    }else if(name =="NeutralSnap")
+    {
         
-        axis1.setUnits(1800);
-         axis2.setUnits(116);
+        
+        axis1.setUnits(1500);
+        axis2.setUnits(116);
         axis3.setUnits(-115);
         axis4.setUnits(0);
-         axis5.setUnits(0);
-         axis6.setUnits(0);
+        axis5.setUnits(0);
+        axis6.setUnits(0);
     }else if(name =="mainTask")
     {
         
@@ -136,7 +150,7 @@ void NPBOTApp::setup()
     int posY =220-40;
     int stepY=210;
     int stepX=200;
-    axis1.setup(0, "A1 z-axis",1900, 1600.0f/75.5f, 0, 1900, "mm",0);
+    axis1.setup(0, "A1 z-axis",1500, 1600.0f/75.5f, 0, 1500, "mm",0);
     axisUI1.setup(&axis1,posX,posY);
     UIAxxisses.push_back(&axisUI1);
     
@@ -156,12 +170,12 @@ void NPBOTApp::setup()
     
     posX=10;
     posY+=stepY;
-    axis4.setup(0, "A4 pols rot",-100,  400.0f* 10 /360, -100, 100, "deg",100);
+    axis4.setup(0, "A4 pols rot",-90,  400.0f* 10 /360, -90, 100, "deg",90);
     axisUI4.setup(&axis4,posX,posY);
     UIAxxisses.push_back(&axisUI4);
     
     posX+=stepX;
-    axis5.setup(0, "A5 posl bend",-105, 400.0f* 10 /360, -105, 100, "deg",105);
+    axis5.setup(0, "A5 posl bend",-95, 400.0f* 10 /360, -95, 100, "deg",95);
     axisUI5.setup(&axis5,posX,posY);
     UIAxxisses.push_back(&axisUI5);
     

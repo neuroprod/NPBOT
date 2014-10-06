@@ -143,7 +143,7 @@ bool SerialHandler::sendHoming()
 {
     if(!isDone)return false;
     if(!isonline)return false;
-    
+    homingIsDone =false;
     isDone =false;
     
     
@@ -261,7 +261,7 @@ void SerialHandler::update()
         }
         else if(b==6){
             console() <<"homing  done" << endl;
-            
+            homingIsDone =true;
                     }
         isDone =true;
 		//serial.flush();

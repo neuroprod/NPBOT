@@ -20,6 +20,8 @@
 #include "Task.h"
 #include "cinder/Capture.h"
 #include "CaptureImage.h"
+#include "CinderOpenCV.h"
+
 using namespace ci;
 using namespace ci::app;
 using namespace std;
@@ -50,5 +52,7 @@ class MainTaskHandler
     gl::TextureRef		mTexture;
     vector<std::shared_ptr<CaptureImage>> floorCaptures;
     
+    vector<float>cameraMatrix, distCoeffs;
+    cv::Mat  map1, map2;
 };
 #endif /* defined(__NPBOT__MainTaskHandler__) */

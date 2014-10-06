@@ -42,7 +42,7 @@ public:
     }
     std::shared_ptr<Task > nextTask;
     MainTaskHandler * mainTaskHandler;
-    
+    int id;
 };
 
 #endif
