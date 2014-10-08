@@ -10,6 +10,7 @@
 #include "HandControler.h"
 #include "ArmNode.h"
 #include "MainTaskHandler.h"
+#include "Constants.h"
 using namespace ci;
 using namespace ci::app;
 using namespace std;
@@ -158,7 +159,7 @@ void NPBOTApp::setup()
     
   
     posX+=stepX;
-    axis2.setup(0, "A2 arm 1",161.5 ,400.0f* 40 /360,0, 161.5, "deg",0);
+    axis2.setup(0, "A2 arm 1",161.5 ,400.0f* 40 /360,-30, 161.5, "deg",30);
     axisUI2.setup(&axis2,posX,posY);
     UIAxxisses.push_back(&axisUI2);
     
@@ -196,7 +197,7 @@ void NPBOTApp::setup()
     
     axis6Node =new ArmNode();
     axis6Node->data =&axis6;
-    axis6Node->setup(6,0,0,0,270,0,90,0);
+    axis6Node->setup(6,0,0,0,HAND_LENGTH ,0,90,0);
     
     
     axis5Node =new ArmNode();
@@ -208,19 +209,19 @@ void NPBOTApp::setup()
     axis4Node =new ArmNode();
     axis4Node->data =&axis4;
     //384
-    axis4Node->setup(4,0,0,-39,384-80,180,90,0);
+    axis4Node->setup(4,0,0,-ARM2_OFFSET,ARM2_LENGTH-80,180,90,0);
     axis4Node->child = axis5Node;
     axis5Node->parent =axis4Node;
     
     axis3Node =new ArmNode();
     axis3Node->data =&axis3;
-    axis3Node->setup(3,0,350,0,0);
+    axis3Node->setup(3,0,ARM1_LENGTH,0,0);
     axis3Node->child = axis4Node;
     axis4Node->parent =axis3Node;
     
      axis2Node =new ArmNode();
     axis2Node->data =&axis2;
-    axis2Node->setup(2,0, 0,250,0);
+    axis2Node->setup(2,0, 0,START_HEIGHT,0);
     axis2Node->child = axis3Node;
     axis3Node->parent =axis2Node;
     

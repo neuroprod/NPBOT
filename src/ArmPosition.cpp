@@ -7,7 +7,7 @@
 //
 
 #include "ArmPosition.h"
-
+#include "Constants.h"
 void ArmPosition::setPositionsFromRotations()
 {
     Vec4f posTarget  = endNode->globalMatrix1 *Vec4f(0,0,0,1);
@@ -39,7 +39,7 @@ void ArmPosition::setRotationsFromPositions()
     matrix.rotate(Vec3f(0,1,0),targetRotY/180*pi);
     
     
-    targetMain= matrix*Vec4f(-270,0,0,1);
+    targetMain= matrix*Vec4f(-HAND_LENGTH,0,0,1);
 
 
 
@@ -52,11 +52,11 @@ void ArmPosition::setRotationsFromPositions()
     Vec3f axis3; 
     //384 40
     
-    float Axis2VirtLength = sqrt(384.f*384.f + 40.f*40.f);
+    float Axis2VirtLength = sqrt(ARM2_LENGTH*ARM2_LENGTH + ARM2_OFFSET*ARM2_OFFSET);
     
-    float offAngle = atan2( 39,384)*180/3.1415;
+    float offAngle = atan2( ARM2_OFFSET,ARM2_LENGTH)*180/3.1415;
    
-   getCircleIntersections(intersections,Vec2f(0,250), 350,Vec2f(targetMain.x,targetMain.y), Axis2VirtLength);
+   getCircleIntersections(intersections,Vec2f(0,START_HEIGHT), ARM1_LENGTH,Vec2f(targetMain.x,targetMain.y), Axis2VirtLength);
     if(intersections.size()>1)
     {
         
@@ -80,7 +80,7 @@ void ArmPosition::setRotationsFromPositions()
         
         
         float angle3 = atan2( axis3.y -axis2.y,axis3.x -axis2.x) *180/pi;
-        float angle2 = atan2( axis2.y-250 ,axis2.x) *180/pi;
+        float angle2 = atan2( axis2.y-START_HEIGHT ,axis2.x) *180/pi;
       
         axisDatas[1]->setUnits(angle2);
         axisDatas[2]->setUnits(angle3-angle2-offAngle);

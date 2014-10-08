@@ -22,10 +22,10 @@ void ArmNode::setup(int pos,int _type, float x,float y,float z,float rotX,float 
     if(pos==5) customDraw =std::bind(&ArmNode::drawNode5  , this);
     if(pos==6) customDraw =std::bind(&ArmNode::drawNode6  , this);
     
-    nodeColor =ColorA(1,1,1,1);
+    nodeColor =ColorA(1,1,1,0.6);
     ambientColor =ColorA(1,1,1,0.3);
-    nodeColor2 =ColorA(1,0,1,1);
-    ambientColor2 =ColorA(1,0,1,0.3);
+    nodeColor2 =ColorA(1,1,1,1);
+    ambientColor2 =ColorA(1,1,1,0.3);
     
 };
 
@@ -76,10 +76,10 @@ void ArmNode::drawTarget()
  
     gl::multModelView(globalMatrix1 );
     glEnable( GL_LIGHT0 );
-   
-   
-
-    glEnable(GL_DEPTH_TEST);
+    //gl::enableWireframe();
+    glEnable(GL_CULL_FACE);
+    glFrontFace(GL_CW);
+   // glEnable(GL_DEPTH_TEST);
     glEnable( GL_LIGHTING );
     glMaterialfv( GL_FRONT, GL_DIFFUSE,	nodeColor );
     glMaterialfv( GL_FRONT, GL_AMBIENT,	ambientColor );
@@ -89,11 +89,12 @@ void ArmNode::drawTarget()
     glDisable( GL_LIGHTING );
 	glDisable( GL_LIGHT0 );
     glDisable (GL_DEPTH_TEST);
-    
+   // gl::disableWireframe();
     
     
     gl::drawCoordinateFrame(80,0,0);
     gl::popMatrices();
+     glDisable(GL_CULL_FACE);
 
 if(child) child->drawTarget();
 };

@@ -153,10 +153,10 @@ void ArmViewport::draw()
     
    
     
-    
+   root->drawCurrent(); 
        root->drawTarget();
 
-   root->drawCurrent();
+   
     
     position->drawTarget();
     position->drawCurrent();
