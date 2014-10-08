@@ -46,6 +46,11 @@ public:
     std::function<void( )> customDraw;
     ColorA nodeColor;
     ColorA ambientColor;
+    
+    ColorA nodeColor2;
+    ColorA ambientColor2;
+    
+    
     void drawNode1();
     void drawNode2();
     void drawNode3();

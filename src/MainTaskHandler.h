@@ -21,7 +21,7 @@
 #include "cinder/Capture.h"
 #include "CaptureImage.h"
 #include "CinderOpenCV.h"
-
+#include "Cube.h"
 using namespace ci;
 using namespace ci::app;
 using namespace std;
@@ -54,5 +54,7 @@ class MainTaskHandler
     
     vector<float>cameraMatrix, distCoeffs;
     cv::Mat  map1, map2;
+    
+    vector<Cube *> cubes;
 };
 #endif /* defined(__NPBOT__MainTaskHandler__) */

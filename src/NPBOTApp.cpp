@@ -150,7 +150,7 @@ void NPBOTApp::setup()
     int posY =220-40;
     int stepY=210;
     int stepX=200;
-    axis1.setup(0, "A1 z-axis",1500, 1600.0f/75.5f, 0, 1500, "mm",0);
+    axis1.setup(0, "A1 z-axis",1500, 1600.0f/75.5f, 0, 1900, "mm",0);
     axisUI1.setup(&axis1,posX,posY);
     UIAxxisses.push_back(&axisUI1);
     
@@ -170,7 +170,7 @@ void NPBOTApp::setup()
     
     posX=10;
     posY+=stepY;
-    axis4.setup(0, "A4 pols rot",-90,  400.0f* 10 /360, -90, 100, "deg",90);
+    axis4.setup(0, "A4 pols rot",-92,  400.0f* 10 /360, -92, 100, "deg",92);
     axisUI4.setup(&axis4,posX,posY);
     UIAxxisses.push_back(&axisUI4);
     
@@ -208,7 +208,7 @@ void NPBOTApp::setup()
     axis4Node =new ArmNode();
     axis4Node->data =&axis4;
     //384
-    axis4Node->setup(4,0,0,39,384-80,0,90,0);
+    axis4Node->setup(4,0,0,-39,384-80,180,90,0);
     axis4Node->child = axis5Node;
     axis5Node->parent =axis4Node;
     

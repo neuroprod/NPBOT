@@ -228,9 +228,15 @@ void SerialHandler::writeInt (int val)
 void SerialHandler::update()
 {
     if(!isonline)return ;
-    if (serial.getNumBytesAvailable()>0)
+    while (serial.getNumBytesAvailable()>0)
 	{
-		uint8 b;
+		
+        
+        
+        
+        
+        
+        uint8 b;
 		try{
 			
             b = serial.readByte();
@@ -238,6 +244,15 @@ void SerialHandler::update()
 		} catch(SerialTimeoutExc e) {
 			console() << "timeout" << endl;
 		}
+        
+        if(b==0xFF){
+            readBuffer();
+        }else
+        {
+            buffer.push_back(b );
+        
+        }
+        /*
 		console() <<"input byte"<< (int)b << endl;
 		if(b==4)
         {
@@ -264,9 +279,56 @@ void SerialHandler::update()
             homingIsDone =true;
                     }
         isDone =true;
-		//serial.flush();
+		//serial.flush();*/
 	}
     
     
     
+}
+void SerialHandler::readBuffer()
+{
+    if(buffer.size()==0)return;
+    uint8 command =buffer[0];
+    /*
+    for(int i=0;i<buffer.size();i++)
+    {
+     console() <<buffer[i] << endl;
+    
+    }
+    console() << endl;*/
+    if(command==4)
+    {
+        
+        console() <<"positioning done" << endl;
+          isDone =true;
+    }
+    else if(command==5)
+    {
+        console() <<"homing place done" << endl;
+        
+        for(int i=0;i<axisData.size();i++)
+        {
+            // axisData[i]->targetStep =0;
+            // axisData[i]->currentStep =0;
+            //axisData[i]->isDirty =true;
+            axisData[i]->setHome();
+        }
+        setPositions();
+          isDone =true;
+    }
+    else if(command==6){
+        console() <<"homing  done" << endl;
+        homingIsDone =true;
+        isDone =true;
+    }else if(command==10)
+    {
+     uint8 axis =buffer[1];
+  //     console()<< "updateaxis"<<axis<<endl ;
+        int val1 =buffer[2];
+        int val2 =buffer[3];
+        int val3 =buffer[4];
+        axisData[axis]->currentStep =val1 *10000 +val2*100+val3;
+    }
+    buffer.clear();
+
 }

@@ -36,10 +36,12 @@ class SerialHandler
     void writeInt (int val);
     bool isDone;
     bool homingIsDone;
+    void readBuffer();
     Serial serial;
     Serial serialHand;
     bool handisonline;
     bool isonline;
     vector<AxisData *> axisData;
+    vector<uint8> buffer;
 };
 #endif /* defined(__NPBOT__SerialHandler__) */

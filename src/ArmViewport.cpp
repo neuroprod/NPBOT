@@ -148,8 +148,8 @@ void ArmViewport::draw()
    
     gl::drawCoordinateFrame (300,0,0);
     gl::color(ColorA(1,1,1,0.5));
-    gl::drawLine(Vec3f(130,0,0), Vec3f(130,0,2000));
-     gl::drawLine(Vec3f(-130,0,0), Vec3f(-130,0,2000));
+    gl::drawLine(Vec3f(130,0,0), Vec3f(130,0,1500));
+     gl::drawLine(Vec3f(-130,0,0), Vec3f(-130,0,1500));
     
    
     

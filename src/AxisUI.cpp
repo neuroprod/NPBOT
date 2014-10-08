@@ -54,7 +54,7 @@ void AxisUI::update()
     labelCurrent->setLabel( axisData->getCurrentForView());
 
     labelTarget->setLabel(axisData->getTargetForView());
-    stepSlider->setValue(axisData->getCurrentInUnits());
+   // stepSlider->setValue(axisData->getCurrentInUnits());
 }
 void AxisUI::draw()
 {

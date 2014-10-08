@@ -35,7 +35,7 @@ public:
         {
             
             serialIsOnline =false;
-            wait =20;
+            wait =30;
             
         }else
         {
@@ -73,7 +73,7 @@ public:
         
         
         if(snapPos<1500){
-            int pos =snapPos+300;
+            int pos =snapPos+100;
             if(pos>1500) pos =1500;
             nextTask = std::make_shared<SnapTask>(pos);
             nextTask->id =id+1;
@@ -108,8 +108,40 @@ public:
          capImage->map2 =&mainTaskHandler->map2;
         capImage->posZ=snapPos;
         capImage->id =id;
+        
+
         capImage->calculate();
-        mainTaskHandler->floorCaptures.push_back(capImage);
+        
+        for(int i=0;i<capImage->cubes.size();i++){
+            Cube *newCube =capImage->cubes[i];
+            bool replaced =false;
+            for(int j=0;j< mainTaskHandler->cubes.size();j++)
+            {
+             Cube *oldCube =mainTaskHandler->cubes[j];
+              //  cout << oldCube->center.distance(newCube->center)<<endl;
+                if(oldCube->center.distance(newCube->center)<newCube->size*2)
+                {
+                    if(newCube ->distFactor<oldCube->distFactor)
+                    {
+                        oldCube->center = newCube->center;
+                         oldCube->angle = newCube->angle;
+                        oldCube->size = newCube->size;
+                        
+                        //cout <<"switch"<<endl;
+                    }
+                    replaced =true;
+                
+                }
+            
+            }
+            
+            
+            if(!replaced){
+            
+                mainTaskHandler->cubes.push_back(capImage->cubes[i]);
+            }
+        }
+               mainTaskHandler->floorCaptures.push_back(capImage);
     
     }
     

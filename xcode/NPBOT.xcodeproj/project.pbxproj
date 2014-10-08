@@ -46,6 +46,8 @@
 		010D657F19E1725B0038AA8F /* HomingTask.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HomingTask.h; path = ../src/HomingTask.h; sourceTree = "<group>"; };
 		010D658019E172740038AA8F /* HandControler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = HandControler.cpp; path = ../src/HandControler.cpp; sourceTree = "<group>"; };
 		010D658119E172740038AA8F /* HandControler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HandControler.h; path = ../src/HandControler.h; sourceTree = "<group>"; };
+		010D658319E2E35A0038AA8F /* Cube.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Cube.h; sourceTree = "<group>"; };
+		010D658419E524E00038AA8F /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		01B1638319C6DCAA00F93D3C /* NewMediaFett.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NewMediaFett.ttf; sourceTree = "<group>"; };
 		01B1638B19C7086900F93D3C /* AxisData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AxisData.cpp; path = ../src/AxisData.cpp; sourceTree = "<group>"; };
 		01B1638C19C7086900F93D3C /* AxisData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AxisData.h; path = ../src/AxisData.h; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 				010D657319E13D490038AA8F /* MainTaskHandler.h */,
 				010D657519E144EC0038AA8F /* Task.h */,
 				010D657E19E172500038AA8F /* CaptureImage.h */,
+				010D658319E2E35A0038AA8F /* Cube.h */,
 			);
 			name = mainTask;
 			sourceTree = "<group>";
@@ -162,6 +165,7 @@
 				01B163A419C8903F00F93D3C /* model */,
 				01B1639419C71EAD00F93D3C /* ui */,
 				73E3A496DB794C37A6099900 /* NPBOTApp.cpp */,
+				010D658419E524E00038AA8F /* Constants.h */,
 			);
 			name = Source;
 			sourceTree = "<group>";

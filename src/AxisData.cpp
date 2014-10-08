@@ -44,9 +44,10 @@ void AxisData::setUnits(float _unit)
 }
 void AxisData::addUnits(float _unit)
 {
+    float unit = targetStep/stepsToUnit+_unit;
     
-    
-    
+    if(unit<minUnits)unit =minUnits;
+    if(unit>maxUnits)unit =maxUnits;
     
     targetStep += _unit *stepsToUnit;
     //  console()<< name<<" targetcurrent: " << targetStep <<endl;

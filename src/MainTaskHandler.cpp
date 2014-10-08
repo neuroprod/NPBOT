@@ -54,7 +54,7 @@ disatance:
     */
     
     
-    float windowScale =1500;
+    float windowScale =1000;
     float asp =(float)getWindowWidth()/ getWindowHeight();
     center.set(500, 200, 750);
     camera.setOrtho(windowScale, -windowScale, -windowScale/asp, windowScale/asp, 100, 7000);
@@ -156,13 +156,45 @@ void MainTaskHandler::draw(){
     gl::drawLine(Vec3f(130,0,0), Vec3f(130,0,1500));
     gl::drawLine(Vec3f(-130,0,0), Vec3f(-130,0,1500));
     
-   
+   gl::color(ColorA(1,1,1,0.1));
     for(int i=0;i<floorCaptures.size();i++)
     {
         floorCaptures[i]->draw();
     }
+    gl::color(ColorA(1,1,1,1));
     
     
+    GLfloat light_position[] = {1000,600 , 800,1 };
+	glLightfv( GL_LIGHT0, GL_POSITION, light_position );
+    glEnable( GL_LIGHT0 );    gl::pushMatrices();
+    
+    
+    glEnable( GL_LIGHT0 );
+    ColorA nodeColor =ColorA(1,0,0,1);
+   ColorA ambientColor =ColorA(1,1,1,0.3);
+    
+    
+    glEnable(GL_DEPTH_TEST);
+    glEnable( GL_LIGHTING );
+    glMaterialfv( GL_FRONT, GL_DIFFUSE,	nodeColor );
+    glMaterialfv( GL_FRONT, GL_AMBIENT,	ambientColor );
+   
+    for(int i=0;i<cubes.size();i++)
+    {
+        float size =cubes[i]->size;
+        gl::pushMatrices();
+        gl::translate(cubes[i]->center);
+        gl::rotate(Vec3f(0,cubes[i]->angle,0));
+       // cout << cubes[i]->angle<<endl ;
+        gl::drawCube(Vec3f(0,0,0), Vec3f(size,size,size));
+        gl::popMatrices();
+    }
+   
+    
+    
+    glDisable( GL_LIGHTING );
+	glDisable( GL_LIGHT0 );
+    glDisable (GL_DEPTH_TEST);
     root->drawTarget();
     
     root->drawCurrent();
