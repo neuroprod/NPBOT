@@ -98,12 +98,11 @@ void NPBOTApp::guiEvent(ciUIEvent *event)
          armPosition.targetRotX =90;
          armPosition.targetRotY =-90;
          armPosition.setRotationsFromPositions();
-        axis6.setUnits(0);//invers coordiantes
+        axis6.setUnits(85);//invers coordiantes
    
     }else if(name =="NeutralSnap")
     {
-        
-        
+               
         axis1.setUnits(1500);
         axis2.setUnits(116);
         axis3.setUnits(-115);
@@ -158,7 +157,7 @@ void NPBOTApp::setup()
     
   
     posX+=stepX;
-    axis2.setup(0, "A2 arm 1",161.5 ,400.0f* 40 /360,-30, 161.5, "deg",30);
+    axis2.setup(0, "A2 arm 1",161.5 ,400.0f* 40 /360,-30, 160.1, "deg",30); //was 161.5 
     axisUI2.setup(&axis2,posX,posY);
     UIAxxisses.push_back(&axisUI2);
     
@@ -180,7 +179,7 @@ void NPBOTApp::setup()
     UIAxxisses.push_back(&axisUI5);
     
     posX+=stepX;
-    axis6.setup(0, "A6 hand rot",0 ,1600.0f/360.0f, 0, 360, "deg",0);
+    axis6.setup(0, "A6 hand rot",5 ,1600.0f/360.0f, 5, 360, "deg",5);
     axisUI6.setup(&axis6,posX,posY);
     UIAxxisses.push_back(&axisUI6);
     

@@ -166,11 +166,11 @@ void ArmNode::drawNode5()
 void ArmNode::drawNode6()
 {
     float grabHeight = 100;
-gl::drawCube(Vec3f(0,0,-grabHeight), Vec3f(100,30,30));
+    gl::drawCube(Vec3f(0,0,-grabHeight), Vec3f(30,100,30));
     
     
-    gl::drawCube(Vec3f(50,0,50-grabHeight), Vec3f(30,30,100));
-    gl::drawCube(Vec3f(-50,0,50-grabHeight), Vec3f(30,30,100));
+    gl::drawCube(Vec3f(0,50,50-grabHeight), Vec3f(30,30,100));
+    gl::drawCube(Vec3f(0,-50,50-grabHeight), Vec3f(30,30,100));
     
     
 };

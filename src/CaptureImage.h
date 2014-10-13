@@ -19,21 +19,26 @@ public:
     CaptureImage()
     {
     
-        scale=690.0f/640.0f;
+       
     
     }
      vector<Cube *>  cubes;
-    float scale;
+    float imgW;
+    float imgH;
     void calculate()
     {
         string r = "image" +toString(id)+".png";
     writeImage( r, mSurface );
     
-        cv::Mat input( toOcv( mSurface) ), output;
+        cv::Mat inputPre( toOcv( mSurface) ), output;
        // remap(input, output, *map1, *map2,cv::INTER_LINEAR);
+        float scaleL=690.0f/640.0f;
+        imgW = 690;
+        imgH =480.f*scaleL;
+        cv::Size size(690,imgH);//the dst image size,e.g.100x100
+        cv:: Mat input;//dst image
         
-        
-        
+        cv::resize(inputPre,input,size);
         
         
         int iLowH =35;
@@ -122,7 +127,7 @@ public:
             Vec2f squareVector;
             squareVector.x =squares[i][0].x -squares[i][1].x;
             squareVector.y =squares[i][0].y -squares[i][1].y;
-            float squareSize =squareVector.length()*scale;
+            float squareSize =squareVector.length();
             float angle =atan2(squareVector.y,squareVector.x);
             
             Vec2f center;
@@ -130,14 +135,14 @@ public:
               center.y =(squares[i][0].y +squares[i][1].y +squares[i][2].y +squares[i][3].y)/4;
             
             Vec2f distVec;
-            distVec.x  = center.x -(640/2);
-            distVec.y  = center.y -(480/2);
+            distVec.x  = center.x -(imgW/2);
+            distVec.y  = center.y -(imgH/2);
            
             float distToCenter = distVec.length();
            // cout <<center<<"  -----------   " <<distToCenter<<endl;;
             Vec3f squareCenter;
-            squareCenter.z =-center.x    *scale +posZ+640/2;
-            squareCenter.x =-center.y * scale+SNAP_X +480/2 ;
+            squareCenter.z =-center.x    +posZ+imgW/2;
+            squareCenter.x =-center.y +SNAP_X +imgH/2+CAMERA_X ;
             squareCenter.y =squareSize/2;
          //   cout << "dist"<<distToCenter<<endl;;
             
@@ -177,13 +182,13 @@ public:
         
         
         gl::pushMatrices();
-    gl::translate(Vec3f(480/2 +475,0,0));
+    gl::translate(Vec3f(imgH/2 +SNAP_X+CAMERA_X,0,0));
         
         
         
-        gl::translate(Vec3f(0,0,posZ+640/2));
+        gl::translate(Vec3f(0,0,posZ+imgW/2));
         gl::rotate(Vec3f(90,180,-90));
-        gl::scale(scale,scale,scale);
+      
         gl::draw( mTextureResult );
         gl::popMatrices();
     

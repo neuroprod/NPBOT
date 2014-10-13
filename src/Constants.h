@@ -14,7 +14,7 @@
 #define ARM2_OFFSET 29
 #define HAND_LENGTH 287
 
-
+#define CAMERA_X 80
 #define SNAP_X 390
 #define SNAP_Y 500
 #endif
