@@ -31,5 +31,6 @@ public:
     SerialHandler *serialHandler;
     float pos1;
     float pos2;
+    float pos;
 };
 #endif /* defined(__NPBOT__HandControler__) */

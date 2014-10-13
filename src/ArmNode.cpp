@@ -147,24 +147,30 @@ void ArmNode::drawNode2()
 };
 void ArmNode::drawNode3()
 {
-    gl::drawCube(Vec3f(384/2,40,0), Vec3f(384,10,10));
+    gl::drawCube(Vec3f((384-80)/2,40,0), Vec3f(384-80,30,30));
 };
 void ArmNode::drawNode4()
 {
-    gl::color(1.0f, 0.0f, 0.0f);
-gl::drawCube(Vec3f(-50,0,0), Vec3f(10,50,50));
-gl::color(1.0f, 1.0f, 1.0f);
-    gl::drawCube(Vec3f(50,0,0), Vec3f(30,50,50));
-    
+
+gl::drawCube(Vec3f(-40,0,50), Vec3f(10,70,150));
+
+    gl::drawCube(Vec3f(40,0,50), Vec3f(10,70,150));
+     gl::drawCube(Vec3f(70,0,50), Vec3f(40,40,40));
 
 };
 void ArmNode::drawNode5()
 {
- gl::drawCube(Vec3f(100,0,0), Vec3f(200,30,30));
+ gl::drawCube(Vec3f(100,0,0), Vec3f(100,30,30));
 
 };
 void ArmNode::drawNode6()
 {
-
-//gl::drawCube(Vec3f(0,0,0), Vec3f(100,30,30));
+    float grabHeight = 100;
+gl::drawCube(Vec3f(0,0,-grabHeight), Vec3f(100,30,30));
+    
+    
+    gl::drawCube(Vec3f(50,0,50-grabHeight), Vec3f(30,30,100));
+    gl::drawCube(Vec3f(-50,0,50-grabHeight), Vec3f(30,30,100));
+    
+    
 };

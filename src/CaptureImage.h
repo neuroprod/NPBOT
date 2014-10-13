@@ -12,6 +12,7 @@
 
 #include "CinderOpenCV.h"
 #include "Cube.h"
+#include "Constants.h"
 class CaptureImage
 {
 public:
@@ -136,7 +137,7 @@ public:
            // cout <<center<<"  -----------   " <<distToCenter<<endl;;
             Vec3f squareCenter;
             squareCenter.z =-center.x    *scale +posZ+350;
-            squareCenter.x =-center.y * scale+720 ;
+            squareCenter.x =-center.y * scale+SNAP_X ;
             squareCenter.y =squareSize/2;
          //   cout << "dist"<<distToCenter<<endl;;
             
@@ -144,7 +145,7 @@ public:
             Cube *cube =new Cube();
             cube->distFactor =distToCenter;
             cube->angle = angle*180/3.1415;
-            cube->center =squareCenter;
+                        cube->center =squareCenter;
             cube->size = squareSize;
             cubes.push_back(cube);
             //}

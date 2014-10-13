@@ -38,7 +38,6 @@
 		00B784B20FF439BC000DE1D7 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
 		010D657219E13D490038AA8F /* MainTaskHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MainTaskHandler.cpp; path = ../src/MainTaskHandler.cpp; sourceTree = "<group>"; };
 		010D657319E13D490038AA8F /* MainTaskHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainTaskHandler.h; path = ../src/MainTaskHandler.h; sourceTree = "<group>"; };
-		010D657519E144EC0038AA8F /* Task.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Task.h; sourceTree = "<group>"; };
 		010D657819E154DA0038AA8F /* SnapTask.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SnapTask.h; path = ../src/SnapTask.h; sourceTree = "<group>"; };
 		010D657B19E1722F0038AA8F /* ArmNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ArmNode.cpp; path = ../src/ArmNode.cpp; sourceTree = "<group>"; };
 		010D657C19E1722F0038AA8F /* ArmNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ArmNode.h; path = ../src/ArmNode.h; sourceTree = "<group>"; };
@@ -46,8 +45,6 @@
 		010D657F19E1725B0038AA8F /* HomingTask.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HomingTask.h; path = ../src/HomingTask.h; sourceTree = "<group>"; };
 		010D658019E172740038AA8F /* HandControler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = HandControler.cpp; path = ../src/HandControler.cpp; sourceTree = "<group>"; };
 		010D658119E172740038AA8F /* HandControler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HandControler.h; path = ../src/HandControler.h; sourceTree = "<group>"; };
-		010D658319E2E35A0038AA8F /* Cube.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Cube.h; sourceTree = "<group>"; };
-		010D658419E524E00038AA8F /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		01B1638319C6DCAA00F93D3C /* NewMediaFett.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NewMediaFett.ttf; sourceTree = "<group>"; };
 		01B1638B19C7086900F93D3C /* AxisData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AxisData.cpp; path = ../src/AxisData.cpp; sourceTree = "<group>"; };
 		01B1638C19C7086900F93D3C /* AxisData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AxisData.h; path = ../src/AxisData.h; sourceTree = "<group>"; };
@@ -63,6 +60,11 @@
 		01B1639C19C735DF00F93D3C /* ArmPosition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ArmPosition.h; path = ../src/ArmPosition.h; sourceTree = "<group>"; };
 		01B163A119C81BF100F93D3C /* SerialHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SerialHandler.cpp; path = ../src/SerialHandler.cpp; sourceTree = "<group>"; };
 		01B163A219C81BF100F93D3C /* SerialHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SerialHandler.h; path = ../src/SerialHandler.h; sourceTree = "<group>"; };
+		01DA725A19E7C80900A36F57 /* GrabTask.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GrabTask.h; path = ../src/GrabTask.h; sourceTree = "<group>"; };
+		01DA725C19EBB80800A36F57 /* Task.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Task.h; path = ../src/Task.h; sourceTree = "<group>"; };
+		01DA725D19EBB81C00A36F57 /* Cube.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Cube.h; path = ../src/Cube.h; sourceTree = "<group>"; };
+		01DA725E19EBB82500A36F57 /* CameraHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CameraHandler.h; path = ../src/CameraHandler.h; sourceTree = "<group>"; };
+		01DA725F19EBB83100A36F57 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Constants.h; path = ../src/Constants.h; sourceTree = "<group>"; };
 		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
@@ -99,12 +101,12 @@
 		010D657619E145990038AA8F /* mainTask */ = {
 			isa = PBXGroup;
 			children = (
+				01DA725C19EBB80800A36F57 /* Task.h */,
 				010D657A19E165C60038AA8F /* tasks */,
 				010D657219E13D490038AA8F /* MainTaskHandler.cpp */,
 				010D657319E13D490038AA8F /* MainTaskHandler.h */,
-				010D657519E144EC0038AA8F /* Task.h */,
 				010D657E19E172500038AA8F /* CaptureImage.h */,
-				010D658319E2E35A0038AA8F /* Cube.h */,
+				01DA725D19EBB81C00A36F57 /* Cube.h */,
 			);
 			name = mainTask;
 			sourceTree = "<group>";
@@ -114,6 +116,7 @@
 			children = (
 				010D657F19E1725B0038AA8F /* HomingTask.h */,
 				010D657819E154DA0038AA8F /* SnapTask.h */,
+				01DA725A19E7C80900A36F57 /* GrabTask.h */,
 			);
 			name = tasks;
 			sourceTree = "<group>";
@@ -146,6 +149,7 @@
 				01B1638C19C7086900F93D3C /* AxisData.h */,
 				01B1639B19C735DF00F93D3C /* ArmPosition.cpp */,
 				01B1639C19C735DF00F93D3C /* ArmPosition.h */,
+				01DA725E19EBB82500A36F57 /* CameraHandler.h */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -165,7 +169,7 @@
 				01B163A419C8903F00F93D3C /* model */,
 				01B1639419C71EAD00F93D3C /* ui */,
 				73E3A496DB794C37A6099900 /* NPBOTApp.cpp */,
-				010D658419E524E00038AA8F /* Constants.h */,
+				01DA725F19EBB83100A36F57 /* Constants.h */,
 			);
 			name = Source;
 			sourceTree = "<group>";

@@ -60,7 +60,7 @@ void ArmPosition::setRotationsFromPositions()
     if(intersections.size()>1)
     {
         
-        console()<<targetMain<<endl;
+       
         if(intersections[0].y>intersections[1].y && targetMain.x>0   )
         {
             mainArmTarget  = intersections[0];
@@ -123,6 +123,7 @@ void ArmPosition::setRotationsFromPositions()
         axisDatas[4]->setUnits(angle5);
         rootNode->update();
         
+       matrixEnd =  rootNode->child->child->child-> child->child->globalMatrix1;
         
         Vec4f posTarget  = endNode->globalMatrix1 *Vec4f(0,0,0,1);
         
@@ -236,7 +237,15 @@ void ArmPosition::drawTarget()
     */
     
     
+    glPushMatrix();
+   
+    gl::multModelView(matrixEnd );
+
+	
+    gl::drawCoordinateFrame(300,10,10);
     
+    
+    glPopMatrix();
     
 
 }

@@ -11,6 +11,7 @@
 #include "ArmNode.h"
 #include "MainTaskHandler.h"
 #include "Constants.h"
+#include "CameraHandler.h"
 using namespace ci;
 using namespace ci::app;
 using namespace std;
@@ -72,7 +73,7 @@ class NPBOTApp : public AppNative {
     HandControler handControler;
     
     MainTaskHandler mainTaskHandler;
-    bool isMainTask;
+    CameraHandler cameraHandler;
 };
 void NPBOTApp::guiEvent(ciUIEvent *event)
 {
@@ -90,17 +91,15 @@ void NPBOTApp::guiEvent(ciUIEvent *event)
     }else if(name =="Neutral")
     {
         
-       // mainTaskHandler->axisDatas[1]->setUnits(71);
-       // mainTaskHandler->axisDatas[2]->setUnits(-75);
-        //mainTaskHandler->axisDatas[3]->setUnits(0);
-        //mainTaskHandler->axisDatas[4]->setUnits(-75);
-        //mainTaskHandler->axisDatas[5]->setUnits(90);
-        axis1.setUnits(1500);
-         axis2.setUnits(71);
-        axis3.setUnits(-75);
-        axis4.setUnits(0);
-         axis5.setUnits(85);
-         axis6.setUnits(90);
+      
+        armPosition.targetX=SNAP_X;
+        armPosition.targetY=SNAP_Y;
+         armPosition.targetZ=1500;
+         armPosition.targetRotX =90;
+         armPosition.targetRotY =-90;
+         armPosition.setRotationsFromPositions();
+        axis6.setUnits(0);//invers coordiantes
+   
     }else if(name =="NeutralSnap")
     {
         
@@ -114,7 +113,7 @@ void NPBOTApp::guiEvent(ciUIEvent *event)
     }else if(name =="mainTask")
     {
         
-        isMainTask =true;
+        mainTaskHandler.isRunning=true;
         mainTaskHandler.start();
       /*
         axis1.setUnits(1400);
@@ -131,7 +130,7 @@ void NPBOTApp::guiEvent(ciUIEvent *event)
 
 void NPBOTApp::setup()
 {
-   isMainTask =false;
+    cameraHandler.setup();
     setWindowSize(1920, 1160);
     setWindowPos(0, 0);
     gui = new ciUICanvas(10,10,300-20,200-40);
@@ -318,6 +317,7 @@ void NPBOTApp::setup()
     mainTaskHandler.axisDatas = axisDatas;
     mainTaskHandler.position =&armPosition;
     mainTaskHandler.serialHandler =&serialHandler;
+    mainTaskHandler.cameraHandler =& cameraHandler;
     mainTaskHandler.setup();
 }
 
@@ -327,6 +327,7 @@ void NPBOTApp::mouseDown( MouseEvent event )
 
 void NPBOTApp::update()
 {
+    cameraHandler.update();
     serialHandler.update();
     serialHandler.updateHand();
     bool axisIsDirty =false;
@@ -383,7 +384,7 @@ void NPBOTApp::update()
     
     
     
-    if(isMainTask){
+    if(mainTaskHandler.isRunning){
         
         mainTaskHandler.update();
 
@@ -400,10 +401,19 @@ void NPBOTApp::draw()
     
      glViewport (0  , 0 , getWindowWidth(), getWindowHeight());
     gl::setMatricesWindow(getWindowWidth(), getWindowHeight());
+    
+    
+    
+    
+    
 	// clear out the window with black
 	gl::clear( Color( 0.2, 0.2, 0.2 ) );
     
-    if(isMainTask)
+    
+ 
+    
+    
+    if(mainTaskHandler.isRunning)
     {
         gl::clear( Color( 0.0, 0.0, 0.0 ) );
       mainTaskHandler.draw();
@@ -413,21 +423,38 @@ void NPBOTApp::draw()
     else
     {
     
+      
+        gui->draw();
     
-     gui->draw();
-    
-    handControler.draw();
-    for (int i=0;i<UIAxxisses.size();i++)
-    {
-        UIAxxisses[i]->draw();
-    }
-    for (int i=0;i<UIpositions.size();i++)
-    {
-        UIpositions[i]->draw ();
-    }
-    view1.draw();
-    view2.draw();
-    view3.draw();
+        handControler.draw();
+        for (int i=0;i<UIAxxisses.size();i++)
+        {
+            UIAxxisses[i]->draw();
+        }
+        for (int i=0;i<UIpositions.size();i++)
+        {
+            UIpositions[i]->draw ();
+        }
+        view1.draw();
+        view2.draw();
+        view3.draw();
+        
+        
+        
+        if(cameraHandler.mTexture)
+        {
+              glPushMatrix();
+            gl::translate(Vec2f(getWindowWidth()-640,getWindowHeight()-480));
+            
+            
+            gl::draw( cameraHandler.mTexture );
+            
+            gl::drawLine(Vec2f(0,0), Vec2f(640,480));
+            gl::drawLine(Vec2f(640,0), Vec2f(0,480));
+            glPopMatrix();
+            
+        }
+        
     }
 }
 

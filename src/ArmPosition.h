@@ -54,7 +54,7 @@ public:
     void drawPosition(float targetX, float targetY,float targetZ,float targetRotX,float targetRotY,float targetRotZ);
     
     bool fail;
-    
+    Matrix44f matrixEnd;
     Vec4f targetMain;
     
     Vec4f targetInvert;

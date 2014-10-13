@@ -22,6 +22,8 @@
 #include "CaptureImage.h"
 #include "CinderOpenCV.h"
 #include "Cube.h"
+#include "CameraHandler.h"
+#include "cinder/gl/TextureFont.h"
 using namespace ci;
 using namespace ci::app;
 using namespace std;
@@ -32,13 +34,13 @@ class MainTaskHandler
 
 
     public :
-    MainTaskHandler(){}
+    MainTaskHandler(){isRunning =false;}
     void setup();
     void start();
     void update();
     void draw();
-    
-    
+    gl::TextureFontRef font;
+    bool isRunning;
     CameraOrtho camera;
     ciUICanvas *gui;
     Vec3f center;
@@ -47,14 +49,12 @@ class MainTaskHandler
     SerialHandler *serialHandler;
     vector <AxisData *> axisDatas;
     std::shared_ptr<Task > currentTask;
-    CaptureRef			mCapture;
-    Surface8u        mSurface;
-    gl::TextureRef		mTexture;
+   
     vector<std::shared_ptr<CaptureImage>> floorCaptures;
     
     vector<float>cameraMatrix, distCoeffs;
     cv::Mat  map1, map2;
-    
+    CameraHandler *cameraHandler;
     vector<Cube *> cubes;
 };
 #endif /* defined(__NPBOT__MainTaskHandler__) */

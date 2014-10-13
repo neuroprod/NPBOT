@@ -39,7 +39,7 @@ void SerialHandler::setup()
     //////////// HAND
     try {
 		Serial::Device dev = Serial::findDeviceByNameContains("tty.usbserial-14P52911");
-		serialHand = Serial( dev, 9600);
+		serialHand = Serial( dev, 115200);
         console() << "Serial Hand Connected" << std::endl;
         handisonline =true;
 	}

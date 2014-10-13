@@ -8,6 +8,7 @@
 
 #include "MainTaskHandler.h"
 #include "HomingTask.h"
+
 void MainTaskHandler::setup()
 {
 /*
@@ -20,7 +21,8 @@ disatance:
     [0.02562266583003429; -0.144444291145838; 0; 0; 0.08528916548364274]
     */
     
-    
+    Font fontMedium = Font( "NewMedia",15);
+    font = gl::TextureFont::create(fontMedium);
     
     cameraMatrix.push_back(503.910252793615);
     cameraMatrix.push_back(0);
@@ -60,7 +62,7 @@ disatance:
     camera.setOrtho(windowScale, -windowScale, -windowScale/asp, windowScale/asp, 100, 7000);
     camera.lookAt( Vec3f(2000,1000,1000)+center, center, Vec3f(0,1,0) );
 
-	for( auto device = Capture::getDevices().begin(); device != Capture::getDevices().end(); ++device ) {
+	/*for( auto device = Capture::getDevices().begin(); device != Capture::getDevices().end(); ++device ) {
 		console() << "Device: " << (*device)->getName() << " "<< std::endl;
         if((*device)->getName().find("Logitech Camera") !=string::npos)
             
@@ -77,7 +79,7 @@ disatance:
             
         }
         
-	}
+	}*/
     
 	
 
@@ -98,11 +100,11 @@ void MainTaskHandler::start()
 
 void MainTaskHandler::update()
 {
-    if( mCapture && mCapture->checkNewFrame() ) {
+    /*if( mCapture && mCapture->checkNewFrame() ) {
         
         mSurface =mCapture->getSurface();
 		mTexture = gl::Texture::create( mSurface );
-	}
+	}*/
 
     
     
@@ -140,10 +142,10 @@ void MainTaskHandler::draw(){
     //  gui->draw();
     
     
-    if( mTexture ) {
+    if( cameraHandler->mTexture ) {
 		glPushMatrix();
         
-		gl::draw( mTexture );
+		gl::draw( cameraHandler->mTexture );
         
 		glPopMatrix();
 	}
@@ -187,7 +189,11 @@ void MainTaskHandler::draw(){
         gl::rotate(Vec3f(0,cubes[i]->angle,0));
        // cout << cubes[i]->angle<<endl ;
         gl::drawCube(Vec3f(0,0,0), Vec3f(size,size,size));
+      
         gl::popMatrices();
+        
+        
+        
     }
    
     
@@ -195,6 +201,21 @@ void MainTaskHandler::draw(){
     glDisable( GL_LIGHTING );
 	glDisable( GL_LIGHT0 );
     glDisable (GL_DEPTH_TEST);
+    
+    
+    for(int i=0;i<cubes.size();i++)
+    {
+        
+        gl::pushMatrices();
+        gl::translate(cubes[i]->center);
+         gl::rotate(Vec3f(0,70,180));
+        gl::color(1.0f,1.0f,1.0f);
+        font->drawString(toString(cubes[i]->center.x)+"-"+toString(cubes[i]->center.z),Vec2f(0,0));
+        gl::popMatrices();
+        
+        
+        
+    }
     root->drawTarget();
     
     root->drawCurrent();
