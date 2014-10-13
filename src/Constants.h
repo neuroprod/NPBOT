@@ -15,6 +15,6 @@
 #define HAND_LENGTH 287
 
 
-#define SNAP_X 250
-#define SNAP_Y 250
+#define SNAP_X 390
+#define SNAP_Y 500
 #endif

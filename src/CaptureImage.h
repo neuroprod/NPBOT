@@ -19,7 +19,7 @@ public:
     CaptureImage()
     {
     
-        scale=700.0f/640.0f;
+        scale=690.0f/640.0f;
     
     }
      vector<Cube *>  cubes;
@@ -115,9 +115,9 @@ public:
         //console()<<"num squares"<<squares.size()<<endl;
         for( size_t i = 0; i < squares.size(); i++ )
         {
-           // const cv::Point* p = &squares[i][0];
-            //int n = (int)squares[i].size();
-           // cv::polylines(input, &p, &n, 1, true, cv::Scalar(0,0,255), 3);
+           const cv::Point* p = &squares[i][0];
+            int n = (int)squares[i].size();
+          cv::polylines(input, &p, &n, 1, true, cv::Scalar(0,0,255), 3);
             
             Vec2f squareVector;
             squareVector.x =squares[i][0].x -squares[i][1].x;
@@ -136,8 +136,8 @@ public:
             float distToCenter = distVec.length();
            // cout <<center<<"  -----------   " <<distToCenter<<endl;;
             Vec3f squareCenter;
-            squareCenter.z =-center.x    *scale +posZ+350;
-            squareCenter.x =-center.y * scale+SNAP_X ;
+            squareCenter.z =-center.x    *scale +posZ+640/2;
+            squareCenter.x =-center.y * scale+SNAP_X +480/2 ;
             squareCenter.y =squareSize/2;
          //   cout << "dist"<<distToCenter<<endl;;
             
@@ -177,11 +177,11 @@ public:
         
         
         gl::pushMatrices();
-    gl::translate(Vec3f(730,0,0));
+    gl::translate(Vec3f(480/2 +475,0,0));
         
         
         
-        gl::translate(Vec3f(0,0,posZ+350));
+        gl::translate(Vec3f(0,0,posZ+640/2));
         gl::rotate(Vec3f(90,180,-90));
         gl::scale(scale,scale,scale);
         gl::draw( mTextureResult );

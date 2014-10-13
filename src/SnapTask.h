@@ -42,7 +42,7 @@ public:
         mainTaskHandler->position->targetRotX =90;
         mainTaskHandler->position->targetRotY =-90;
         mainTaskHandler->position->setRotationsFromPositions();
-        mainTaskHandler-> axisDatas[5]->setUnits(0);//invers coordiantes
+        mainTaskHandler-> axisDatas[5]->setUnits(85);//invers coordiantes
         
         
         if(! mainTaskHandler->serialHandler->sendPositions())
