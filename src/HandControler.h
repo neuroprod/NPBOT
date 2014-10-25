@@ -13,7 +13,7 @@
 #include "ciUI.h"
 #include "SerialHandler.h"
 #include <iostream>
-
+#include "AxisData.h"
 
 using namespace ci;
 using namespace ci::app;
@@ -32,5 +32,6 @@ public:
     float pos1;
     float pos2;
     float pos;
+    AxisData *data;
 };
 #endif /* defined(__NPBOT__HandControler__) */

@@ -252,35 +252,7 @@ void SerialHandler::update()
             buffer.push_back(b );
         
         }
-        /*
-		console() <<"input byte"<< (int)b << endl;
-		if(b==4)
-        {
-        
-            console() <<"positioning done" << endl;
-        
-        }
-       
-        else if(b==5)
-        {
-            console() <<"homing place done"<< (int)b << endl;
-            
-            for(int i=0;i<axisData.size();i++)
-            {
-              // axisData[i]->targetStep =0;
-               // axisData[i]->currentStep =0;
-                //axisData[i]->isDirty =true;
-                axisData[i]->setHome();
-            }
-            setPositions();
-        }
-        else if(b==6){
-            console() <<"homing  done" << endl;
-            homingIsDone =true;
-                    }
-        isDone =true;
-		//serial.flush();*/
-	}
+       	}
     
     
     

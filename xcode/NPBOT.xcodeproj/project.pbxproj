@@ -15,6 +15,9 @@
 		010D657419E13D490038AA8F /* MainTaskHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 010D657219E13D490038AA8F /* MainTaskHandler.cpp */; };
 		010D657D19E1722F0038AA8F /* ArmNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 010D657B19E1722F0038AA8F /* ArmNode.cpp */; };
 		010D658219E172740038AA8F /* HandControler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 010D658019E172740038AA8F /* HandControler.cpp */; };
+		01AC2CC519F900BA000E9061 /* SnapTask.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 01AC2CC419F900BA000E9061 /* SnapTask.cpp */; };
+		01AC2CC719F900D0000E9061 /* GrabTask.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 01AC2CC619F900D0000E9061 /* GrabTask.cpp */; };
+		01AC2CC919F900E4000E9061 /* HomingTask.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 01AC2CC819F900E4000E9061 /* HomingTask.cpp */; };
 		01B1638419C6DCAA00F93D3C /* NewMediaFett.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 01B1638319C6DCAA00F93D3C /* NewMediaFett.ttf */; };
 		01B1638F19C7086900F93D3C /* AxisData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 01B1638B19C7086900F93D3C /* AxisData.cpp */; };
 		01B1639019C7086900F93D3C /* AxisUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 01B1638D19C7086900F93D3C /* AxisUI.cpp */; };
@@ -45,6 +48,9 @@
 		010D657F19E1725B0038AA8F /* HomingTask.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HomingTask.h; path = ../src/HomingTask.h; sourceTree = "<group>"; };
 		010D658019E172740038AA8F /* HandControler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = HandControler.cpp; path = ../src/HandControler.cpp; sourceTree = "<group>"; };
 		010D658119E172740038AA8F /* HandControler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HandControler.h; path = ../src/HandControler.h; sourceTree = "<group>"; };
+		01AC2CC419F900BA000E9061 /* SnapTask.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SnapTask.cpp; path = ../src/SnapTask.cpp; sourceTree = "<group>"; };
+		01AC2CC619F900D0000E9061 /* GrabTask.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GrabTask.cpp; path = ../src/GrabTask.cpp; sourceTree = "<group>"; };
+		01AC2CC819F900E4000E9061 /* HomingTask.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = HomingTask.cpp; path = ../src/HomingTask.cpp; sourceTree = "<group>"; };
 		01B1638319C6DCAA00F93D3C /* NewMediaFett.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NewMediaFett.ttf; sourceTree = "<group>"; };
 		01B1638B19C7086900F93D3C /* AxisData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AxisData.cpp; path = ../src/AxisData.cpp; sourceTree = "<group>"; };
 		01B1638C19C7086900F93D3C /* AxisData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AxisData.h; path = ../src/AxisData.h; sourceTree = "<group>"; };
@@ -115,8 +121,11 @@
 			isa = PBXGroup;
 			children = (
 				010D657F19E1725B0038AA8F /* HomingTask.h */,
+				01AC2CC819F900E4000E9061 /* HomingTask.cpp */,
 				010D657819E154DA0038AA8F /* SnapTask.h */,
+				01AC2CC419F900BA000E9061 /* SnapTask.cpp */,
 				01DA725A19E7C80900A36F57 /* GrabTask.h */,
+				01AC2CC619F900D0000E9061 /* GrabTask.cpp */,
 			);
 			name = tasks;
 			sourceTree = "<group>";
@@ -327,6 +336,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01AC2CC719F900D0000E9061 /* GrabTask.cpp in Sources */,
 				01B1639A19C7358400F93D3C /* PositionUI.cpp in Sources */,
 				010D658219E172740038AA8F /* HandControler.cpp in Sources */,
 				01B1639D19C735DF00F93D3C /* ArmPosition.cpp in Sources */,
@@ -334,9 +344,11 @@
 				01B1639719C7356B00F93D3C /* LogUI.cpp in Sources */,
 				01B1639319C71BB800F93D3C /* ArmViewport.cpp in Sources */,
 				01B1638F19C7086900F93D3C /* AxisData.cpp in Sources */,
+				01AC2CC919F900E4000E9061 /* HomingTask.cpp in Sources */,
 				010D657419E13D490038AA8F /* MainTaskHandler.cpp in Sources */,
 				01B163A319C81BF100F93D3C /* SerialHandler.cpp in Sources */,
 				196A151BDD7B4D649A5B4E68 /* NPBOTApp.cpp in Sources */,
+				01AC2CC519F900BA000E9061 /* SnapTask.cpp in Sources */,
 				01B1639019C7086900F93D3C /* AxisUI.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

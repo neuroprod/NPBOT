@@ -50,7 +50,7 @@ public:
     ColorA nodeColor2;
     ColorA ambientColor2;
     
-    
+    float handPos;
     void drawNode1();
     void drawNode2();
     void drawNode3();

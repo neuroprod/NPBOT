@@ -27,27 +27,71 @@ public:
     float imgH;
     void calculate()
     {
+  
+        
+        cv::Mat cameraMatrix = cv::Mat::eye(3, 3, CV_64F);
+        
+        
+        cameraMatrix.at<Float64>(0,0) =503.910252793615;
+        cameraMatrix.at<Float64>(0,1) =0;
+        cameraMatrix.at<Float64>(0,2) =319.5;
+        
+        cameraMatrix.at<Float64>(1,0) =0;
+        cameraMatrix.at<Float64>(1,1) =503.910252793615;
+        cameraMatrix.at<Float64>(1,2) =239.5;
+        
+        cameraMatrix.at<Float64>(2,0) =0;
+        cameraMatrix.at<Float64>(2,1) =0;
+        cameraMatrix.at<Float64>(2,2) =1;
+                
+       cv::Mat distCoeffs = cv::Mat::zeros(8, 1, CV_64F);
+        distCoeffs.at<Float64>(0,0) =-0.00449581614979722;
+       distCoeffs.at<Float64>(1,0) =-0.01090092124412815;
+        distCoeffs.at<Float64>(2,0) =0;
+         distCoeffs.at<Float64>(3,0) =0;
+         distCoeffs.at<Float64>(4,0) =-0.07410480760405815;
+        
         string r = "image" +toString(id)+".png";
-    writeImage( r, mSurface );
+        writeImage( r, mSurface );
     
         cv::Mat inputPre( toOcv( mSurface) ), output;
-       // remap(input, output, *map1, *map2,cv::INTER_LINEAR);
-        float scaleL=690.0f/640.0f;
-        imgW = 690;
+        
+         cv::Size  imageSize;
+        
+        imageSize = inputPre.size();
+        cv::Mat  map1, map2;
+        // undistort( view, rview, cameraMatrix, distCoeffs, cameraMatrix );
+        cv::initUndistortRectifyMap(cameraMatrix, distCoeffs, cv::Mat(),
+                                getOptimalNewCameraMatrix(cameraMatrix, distCoeffs, imageSize, 1, imageSize, 0),
+                                imageSize, CV_16SC2, map1, map2);
+        cv::Mat inputPre2;
+        remap(inputPre, inputPre2, map1, map2, cv::INTER_LINEAR);
+
+        
+        
+        
+        
+        
+         //undistort( inputPre, inputPre2, cameraMatrix, distCoeffs, cameraMatrix );
+        
+        float realWith =700;
+        // remap(input, output, *map1, *map2,cv::INTER_LINEAR);
+        float scaleL=realWith/640.0f;
+        imgW = realWith;
         imgH =480.f*scaleL;
-        cv::Size size(690,imgH);//the dst image size,e.g.100x100
+        cv::Size size( imgW ,imgH);//the dst image size,e.g.100x100
         cv:: Mat input;//dst image
         
-        cv::resize(inputPre,input,size);
+        cv::resize(inputPre2,input,size);
         
         
-        int iLowH =35;
-        int iHighH =37;
+        int iLowH =5;
+        int iHighH =30;
         
         int iLowS = 0;
         int iHighS = 255;
         
-        int iLowV = 0;
+        int iLowV = 230;
         int iHighV = 255;
         
         
@@ -74,13 +118,14 @@ public:
         // holes between edge segments
         dilate(gray, gray,cv::Mat(),cv::Point(-1,-1));
         
-        
+       
         
         vector<vector<cv::Point> > contours;
         findContours(gray, contours, cv::RETR_LIST, cv::CHAIN_APPROX_SIMPLE);
         
-        
+       // cv::polylines(gray, &p, &n, 1, true, cv::Scalar(0,0,255), 3);
         vector<cv::Point> approx;
+       
         vector<vector<cv::Point> > squares;
         // test each contour
         for( size_t i = 0; i < contours.size(); i++ )
@@ -95,7 +140,7 @@ public:
             // Note: absolute value of an area is used because
             // area may be positive or negative - in accordance with the
             // contour orientation
-            if( approx.size() == 4 &&
+            if( approx.size() == 4  &&
                fabs(contourArea(cv::Mat(approx))) > 1000 &&
                isContourConvex(cv::Mat(approx)) )
             {
@@ -120,9 +165,9 @@ public:
         //console()<<"num squares"<<squares.size()<<endl;
         for( size_t i = 0; i < squares.size(); i++ )
         {
-           const cv::Point* p = &squares[i][0];
-            int n = (int)squares[i].size();
-          cv::polylines(input, &p, &n, 1, true, cv::Scalar(0,0,255), 3);
+           //const cv::Point* p = &squares[i][0];
+           // int n = (int)squares[i].size();
+         // cv::polylines(input, &p, &n, 1, true, cv::Scalar(0,0,255), 3);
             
             Vec2f squareVector;
             squareVector.x =squares[i][0].x -squares[i][1].x;
@@ -184,7 +229,7 @@ public:
         gl::pushMatrices();
     gl::translate(Vec3f(imgH/2 +SNAP_X+CAMERA_X,0,0));
         
-        
+        gl::color(1.f,1.f,1.f,1.0f);
         
         gl::translate(Vec3f(0,0,posZ+imgW/2));
         gl::rotate(Vec3f(90,180,-90));

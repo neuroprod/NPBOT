@@ -39,6 +39,7 @@ class MainTaskHandler
     void start();
     void update();
     void draw();
+    Vec3f getNextPos();
     gl::TextureFontRef font;
     bool isRunning;
     CameraOrtho camera;
@@ -51,10 +52,11 @@ class MainTaskHandler
     std::shared_ptr<Task > currentTask;
    
     vector<std::shared_ptr<CaptureImage>> floorCaptures;
-    
-    vector<float>cameraMatrix, distCoeffs;
+       
     cv::Mat  map1, map2;
     CameraHandler *cameraHandler;
     vector<Cube *> cubes;
+    int count;
+    int heightCount;
 };
 #endif /* defined(__NPBOT__MainTaskHandler__) */

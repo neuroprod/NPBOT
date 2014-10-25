@@ -10,6 +10,7 @@
 
 void ArmNode::setup(int pos,int _type, float x,float y,float z,float rotX,float rotY,float rotZ)
 {
+    handPos =0;
     offsetMatrix.rotate(Vec3f(1,0,0), rotX/180*3.1415);
     offsetMatrix.rotate(Vec3f(0,1,0), rotY/180*3.1415);
     offsetMatrix.rotate(Vec3f(0,0,1), rotZ/180*3.1415);
@@ -55,15 +56,13 @@ void ArmNode::update()
 		globalMatrix1.set(&l1.m[0]);
 		globalMatrix2.set(&l2.m[0]);
 	}
-	else
-	{
-		
-		globalMatrix1=  parent->globalMatrix1 *l1;
-        globalMatrix2=  parent->globalMatrix2 *l2;
-	}
+    else
+    {
+        globalMatrix1 =parent->globalMatrix1 *l1;
+        globalMatrix2 =parent->globalMatrix2 *l2;
     
-    if(child) child->update();
-
+    }
+	if(child)child->update();
 
 };
 
@@ -124,7 +123,17 @@ if(child) child->drawCurrent();
 };
 
 
-
+/*
+ 
+ else
+ {
+ 
+ globalMatrix1=  parent->globalMatrix1 *l1;
+ globalMatrix2=  parent->globalMatrix2 *l2;
+ }
+ 
+ if(child) child->update();
+ */
 
 ///////////////////
 //
@@ -168,9 +177,9 @@ void ArmNode::drawNode6()
     float grabHeight = 100;
     gl::drawCube(Vec3f(0,0,-grabHeight), Vec3f(30,100,30));
     
-    
-    gl::drawCube(Vec3f(0,50,50-grabHeight), Vec3f(30,30,100));
-    gl::drawCube(Vec3f(0,-50,50-grabHeight), Vec3f(30,30,100));
+    float dist =data->handPos*50;
+    gl::drawCube(Vec3f(0,dist,50-grabHeight), Vec3f(30,30,100));
+    gl::drawCube(Vec3f(0,-dist,50-grabHeight), Vec3f(30,30,100));
     
     
 };

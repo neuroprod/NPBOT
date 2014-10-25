@@ -34,7 +34,7 @@ public:
     string name;
     int id;
     
-    
+    float handPos;
     float minUnits;
     float maxUnits;
     

@@ -8,9 +8,27 @@
 
 #include "MainTaskHandler.h"
 #include "HomingTask.h"
+Vec3f MainTaskHandler::getNextPos()
+{
+    Vec3f position;
+    position.z =1400 - 150*count;
+    position.y =heightCount;
+    position.x = 400;
+    
+    count++;
+    if (count>2)
+    {
+        heightCount+=46;
+        count =0;
+    }
+    return position;
 
+}
 void MainTaskHandler::setup()
 {
+    
+    count =0;
+    heightCount=35;
 /*
     [503.910252793615, 0, 319.5;
      0, 503.910252793615, 239.5;
@@ -24,24 +42,7 @@ disatance:
     Font fontMedium = Font( "NewMedia",15);
     font = gl::TextureFont::create(fontMedium);
     
-    cameraMatrix.push_back(503.910252793615);
-    cameraMatrix.push_back(0);
-    cameraMatrix.push_back(319.5);
-    
-    cameraMatrix.push_back(0);
-    cameraMatrix.push_back(503.910252793615);
-     cameraMatrix.push_back(239.5);
-    
-    cameraMatrix.push_back(0);
-    cameraMatrix.push_back(0);
-    cameraMatrix.push_back(1);
-  
-    
-    distCoeffs.push_back(0.02562266583003429);
-     distCoeffs.push_back(-0.144444291145838);
-      distCoeffs.push_back(0);
-      distCoeffs.push_back(0);
-      distCoeffs.push_back(0.08528916548364274);
+ 
   
     cv::Size imageSize;
     
@@ -93,7 +94,7 @@ void MainTaskHandler::start()
     
     
     currentTask->start();
-
+  
 
 };
 
